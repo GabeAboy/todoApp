@@ -1,0 +1,37 @@
+Multiple Named Views
+
+  We can have multiple views per template example :
+      our current 'home' state can have multiple ui-views with different states that are defined inside of the .config page
+
+      in our config function we can nest inside of our parent state the object 'views'
+
+      if we define 'views' , our state's templateUrl, template, & templateProvider will be ignored
+      The parent state's template/templateUrl/templateProvider will be stored inside of the 'views' object
+      The property names in 'views' must match the ui-view='....' names in the template
+
+      $stateProvider
+        .state('products',{
+          url:'/products'
+          views: {
+            '': {
+              templateUrl:'./views/shoesTmpl.html',
+              controller: function($scope,mainService){
+                $scope.shoes = ['jordans','addidas','nikes','vans'];
+                $scope.shoes = mainService.getShoes();
+              }
+            },
+            'shirts@products' : {
+              templateUrl:'./views/shirtsTmpl.html',
+              controller: 'shirtsCtrl'
+            },
+            'pics@products': {
+              templateUrl:'./views/picsTmpl.html',
+              controller: function($scope,mainService){
+                var promise = mainService.getPics();
+                promise.then(function(response){
+                  $scope.pictures = response.data;
+                })
+              }
+            }
+          }
+        })

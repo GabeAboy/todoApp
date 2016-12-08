@@ -1,0 +1,22 @@
+@keyframes wavey-back {
+  0% {top:30px}
+  50% {top:20px}
+  100% {top:30px}
+}
+@keyframes wave-back {
+  0% {top:30px}
+  50% {top:20px}
+  100% {top:30px}
+}
+
+.backwave {
+  position:absolute;
+  animation: wavey-back 5s infinite;
+  animation-direction: alternate:
+}
+.wave {
+  position:absolute;
+  animation: wave-back 5s infinite;
+  /*animation-delay: 2s;*/
+  animation-direction: alternate;
+}

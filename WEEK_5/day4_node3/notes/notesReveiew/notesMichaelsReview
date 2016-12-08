@@ -1,0 +1,6 @@
+electron is what you can use to  build cross platform apps with js, css html
+
+npm init builds the file package.json
+we have dependencies and devDependencies
+
+headers are the meta data of your requests - size, weight of your envelope 

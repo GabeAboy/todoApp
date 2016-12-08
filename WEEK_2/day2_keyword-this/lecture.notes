@@ -1,0 +1,21 @@
+function a(x) {
+ this <=== is the context in which how the function is invoked
+}
+
+3 RULES : EXPLICIT,=====> IMPLICIT,======> default/WINDOW
+
+EXPLICIT :
+  a()
+  a.call(ctx,'b')
+  a.apply(ctx,['b']) <====== only takes in one array
+  var a2 = a.bind(ctx,'b') <==== bind cannot accept a second paramaeter // CHeck partial application
+
+    Start at the keyword 'this' and work way out from the problem
+
+IMPLICIT :
+
+
+        NEW:
+
+        check the links page
+        

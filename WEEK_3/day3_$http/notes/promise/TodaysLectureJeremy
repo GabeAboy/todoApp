@@ -1,0 +1,62 @@
+Making a web request which is going to someone elses comp and getting information
+
+way we say where in computer lang is by using URL
+
+$http comes with a promise <=== we handle the promise by using .then()
+
+.then interprets results and then does another call from the callback.
+
+CRUD <=== create read update delete
+
+API<=====application program interface <==== whats another word for application? Program!
+  Program Program interface
+
+{client}<==|api|==>[[server]]<====>((((database))))
+
+$http is going through the web to request information
+
+api is part of the server where we are allowed to access information the rest would be private
+
+XML <==== is where HTML comes from.
+
+How do you check to see if all your HTML files are valid HTML ? GOOGLE.
+
+JSON => only takes basic data types <======= can't put functions or undefined <===never put functions inside JSON
+having a JSON object with a function will tell the other program that is using it how to behave (not good) those are called trojans/worms/virus
+
+angular.fromJson - Deserializes a JSON string.
+
+does angular automatically parse the JSON object when returned a promised HTTP call ???? <===== good question <=== google or check lecture video
+
+What is ReST? < ==== its a protocol or set of rules for establishing a communication between two programs
+
+'?' in url acts like a filter <==== chains to the url
+
+rest is a protocol to exchange (XML and JSON) messages <==== rest is url format <====rest is the verb which is used in HTTP protocols method names GET, POST,
+
+Rest is the way we should use HTTP dictates the usage of DELETE to erase behind URL. where as we would misuuse a GET or POST query like ... product/?delete_id=22 without REST.
+
+POST <===== CREATE
+
+GET<====== READ
+
+PUT <===== UPDATE
+
+REMOVE<==== DELETE
+
+REST enforces the use of available HTTP commands as theey were meant to be used
+
+===================================================Ways we pass information through the URL==================================================
+
+Three ways params, query, body <=== Body : {object}
+
+passing body ====>  example.
+                          var promise == $http({
+                              url:'https://url.com',
+                              method:'post',
+This is the body     ====>    data: {name: 'mee Sir'}
+                              })
+
+=========================================================
+
+two things that we response is going to give us is the preoperties of ====> data and status <==== status will likely be a code(200, 404, 500) etc.

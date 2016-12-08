@@ -1,0 +1,90 @@
+Headers exist are meta info sent with requ and some point we need to look at that info
+
+  API < === is a portion of a server or an app that allows other apps to speak through it
+
+  protocol - set of procedures <==== REST is the same
+
+
+
+
+REST PROTOCOLS
+
+1.  GET <==== gets the data and displays it
+
+2.  PUT==> ? stands for seprator saying <==== after this point we are going to start giving you parameters seperated by &
+
+  ^ update data
+
+3.  POST is when adding data <==== BODY {object}
+
+*** ^ these methods above can do whatever we want them to do, we are just following rest protocol by naming the methods the way they are.
+
+Angular
+  $http.post('http://anyurlcangohere.com/get/dogs')
+  .then(function(dogs){
+  var status = dogs.status
+  var data = dogs.data
+  })
+
+Javascript Promise <=== google when having trouble with understanding these problems
+
+var promise =$http.get('http://anyurlcangohere.com/get/dogs')
+
+promise.then(function(results){
+  if(results.status === 200){
+  var status = results.status;
+  var data = results.data;
+  }
+})
+
+    here we are passing in results to the .then(function(results))
+=============================$HTTP===================================
+    Http.cat <==== tells you the status codes that you are getting or giving
+
+$http({
+method:'get',
+url:'http://www.anyurlyoulike/cats/dogs'
+}).then(function(response){
+var status = response.status;
+var data= response.data;
+})
+
+**$http service that facilitates communication with remote HTTP servers via the browsers XMLHttpRequest object or via JSONP
+
+**$HTTP is a function which takes a single argument - a configuration object - that is used to genrate an HTTP request and "returns a promise".
+=========================================================
+$http({
+method:'get',
+url:'/someurl'
+}).then(function successCall(response){
+//this cb will be call asynchronously
+// when respons is avail
+}, function errorCallBack(response){
+  //called asynchronously if error occurs
+  // or server returns response with an error status
+});
+
+STATUS codes are part of the HTTP protocol ,
+NOT REST protocols <==== representational state transfer
+
+var promise = $http.get('https://url/cat/dog');
+
+promise.then(function(response){
+var status = response.status;
+var data = response.data;
+})
+
+$http <==== do not use in controller <=== design headaches
+
+this.getAnyPeople = function() {
+var promise = $http.get('https://url')
+promise.then(function(response){
+  console.log(response)
+return response.data.people
+})
+return promise;
+}
+
+data and status are two properties that are returned from our $http request
+
+if we ever see an id it is meant to be unique

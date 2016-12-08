@@ -1,0 +1,13 @@
+Jeremys lecture from dec 2015
+
+Seperation of concerns
+
+$log,$http <=== params for .controller(function($scope,$log,$http))
+
+as we are adding properties to our $scope object through html and view <=== angular flags the data <=== digest cycle tends to digest things properly <=== constantly looping through and looking for changes
+$scope.$watch is already a property on the scope object
+
+    $scope.$watch('ourData',function(){
+     var newItem = $scope.ourData;
+     
+    })

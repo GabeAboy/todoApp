@@ -1,0 +1,16 @@
+.box {
+  height: 200px;
+  width: 200px;
+  background: red;
+}
+@media (max-width:300px) {
+  .box {
+    background: blue;
+  }
+}
+@media (min-width:500px){
+  .box {
+    background: gray;
+  }
+}
+@media (min-)

@@ -1,0 +1,3 @@
+gridOptions is the variable we are going to bind to where we will initialize our grid options.
+
+in our js file within the controller where we plan to use ng-grid, we add data that our grid will use <==== $scope.myData

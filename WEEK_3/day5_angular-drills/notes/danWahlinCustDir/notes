@@ -1,0 +1,14 @@
+shared and isolate scope
+
+shared scope <== bunk bed approach
+  top=parent scope
+  below-child scope
+
+also known as inherited scope when referring to the child scope
+
+Isolate scope-isolated from everything else
+
+      controller
+  [   directive   ]
+
+  

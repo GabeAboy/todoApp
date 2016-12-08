@@ -1,0 +1,18 @@
+body {
+  text-align: center;
+  background: orange;
+}
+.del {
+  float: right;
+}
+.quote-wrapper {
+  border:3px solid black;
+  border-radius: 15px;
+  background: tan;
+}
+.jumbotron {
+  background: brown;
+}
+.btn-warning {
+  margin-left: 10px;
+}

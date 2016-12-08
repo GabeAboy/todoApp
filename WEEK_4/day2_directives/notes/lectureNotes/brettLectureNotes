@@ -1,0 +1,33 @@
+If we need to manipulate our view we should use a directive ==> used to manipulate the DOM
+
+.directive takes two arguments ==> the name of our directive and a callback function
+it will return an object
+object has a property called 'restrict' which will determine whether our directive will be an element,attribute,or class or all 3.
+second property will be a template or templateUrl
+
+when angular fires up is when our browser gets to our first script tag.
+angular file loaded in nanoseconds
+it will start looking for ng-app which will tell our browser where angular starts
+second it will be looking for ng-contrller to find out which block of code angular will be in control of
+third it will be looking for mistache brackets
+
+at the same time angular will be looking for changes and adjusting the DOM to the changes
+
+ng-show takes a boolean
+
+link function is what we are going to use to manipulate the dOM.
+ introduced in 2009
+
+rule is that we are not to do any jquery inside of angular it is best to use angular link to manip DOm
+
+angular provided JQlite which is a library which includes the major parts of jQuery library
+
+DOM traversal
+
+different ways we can send information to a directive
+
+restrict:'AE' <==== using an attribute will take up a new block in the html
+
+Two way binding '=' means that our directive and our parent controller are in constant communication any changes will be reflected both in the controller and inside the directive
+
+two-way data binding '=' means that we can change the value inside of the controller while we change the value of our directive where they both meet which is on the index.html page 

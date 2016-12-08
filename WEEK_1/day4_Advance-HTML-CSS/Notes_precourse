@@ -1,0 +1,97 @@
+We can resize images if they are not the same size
+
+img.resize{
+   width:200px;
+   height:40px;
+}
+
+img.resize{
+   width:200%;
+   height:40%;
+}
+
+
+
+Adjacent sibling selector
+A + B - will choose the following Node that is immediately after the specified element
+
+General sibling selectors
+A ~ B - '~' will select nodes that follow (not necessarily immediately)the specified element, if both elements share the same parent. p ~ span will select all the span tags that follow the p tag if both tags share the same element.
+
+Child Selectors
+A > B - selects nodes that are direct 'children' of the former specified element.
+
+Descendant selectors
+the ' ' combinator selects nodes that are children (not necessarily direct children) of former specified element
+
+
+
+
+#THE 30 CSS selectors you must memorize
+
+1. * <====can be used with child selectors
+
+  #container * {
+    border: 1px solid black;
+  };
+
+  will target all children of #container div
+  don"t try to use often
+
+4. descendant operator
+li a {
+
+};
+
+6. x:visited {
+
+}
+    &
+a:link {}; < ======target all tags yet to me clicked on
+
+7. X + Y < ===== will only select element that immediately preceded by former element
+
+8. X > Y <==== will select direct children of the specified element where as X Y will select all children of of the preceded element. more specific than X  Y
+
+9. x  ~ y < === will select a all elements that immediately follow the preceded tag as where X > Y will only select the first instance
+
+10.X[title] <==== referred to as the attributes selector
+only select x tags with title attributes
+
+11. X[href='foo'] <======select attributes with the value of 'foo'
+
+12.X[href*='nettuts'] <==== means that the proceeding value must contain nettuts in the attributes value that way it covers nettuts.com, net.tutsplus.com, and even tutsplus.com.
+
+13. X[href^='http'] <=== target all x tags with the http in at the beginning of value.
+
+X[href$='jpg']<===== $referring to end of string
+
+X[foo~='bar'] <=== select space separated list of values
+
+X:Checked <==== checked element
+
+X:after <===generate content around the specified element
+
+X:hover
+
+X:not(selector)<====negation pseudo-class select all except
+
+X::pseudoElement <=== must be styled to blocklevel elements to work. <======p::first-line or p::first-letter
+
+x:nth-child(n) <====non zero based
+
+li:nth-last-child(n)<=== n represents from the end 2,1..etc
+
+x:nth-of-type(n) <==== to select types of elements
+
+x:nth-last-of-type() <==== same but backwards
+
+X:first Child<=== select first child of elements parent what's the difference between this and X > Y
+
+X:last-child
+
+X:only-child
+
+X:only-of-type
+
+X:first-of-type

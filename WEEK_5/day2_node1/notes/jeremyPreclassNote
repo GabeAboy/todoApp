@@ -1,0 +1,217 @@
+Node
+  Node is kind of a big deal
+  fastest growing server application growing 5-10times next competitor
+Servers and node
+  & servers with node
+
+Node - an engine that runs javascript
+    - browsers are javascript engines and html,css engines
+
+    -node is a browser without the browser take away all the visible parts of a browser
+
+    -node runs on chrome's v8 engine
+
+Things you can do with node :
+  -drive a quadcopter
+  - a file parser
+  -a remote control car
+  -a screen scraper
+  -a small console application
+  -a web server
+  -Tessel.io <=== hardware to code in node
+
+Modules - sharing code between node is between modules
+  -one per file
+  -No export = not visible outside of that file
+  -Globals? Nope, only locals within a file <==== cant make global variables
+
+  Module.exports {
+   //This obj is shared as the filename aka file.name
+  }
+
+  Goes off of file name
+  whatever we name the file is the name that we will be requiring
+    it is going to require a node_modules
+
+Practice
+  -Make an index
+  -make a module
+  -export it
+  -import it
+  -do it again
+
+  index.js <==== where our app starts
+
+  when requiring we need to place a './' dot with a forward slash
+
+  we can share things between two files or more by exporting
+    module.exports = {
+      title:'skittles'
+      eat = function() {
+       return 'nomnomnom'
+      }
+    }
+
+  bundle and share many modules with Packages
+
+  packages in node come from NPM - node package manager
+
+  when we do an NPM install we will see the loading screen it is actually loading all of the dependencies that the service needs to operate
+
+  modules - reusable pieces of code that we are exporting and importing
+
+  packages - a bundle of modules that have been packaged up and bundled that have been ready to be shipped
+
+  packages work off of a package.json file
+
+  we are going to bring in a third party library call 'express'
+
+  we are going to NPM install 'express'
+
+  node is going to make a folder called node_modules and dump all our our packages in there (all of our third party packages)
+
+  we need to make our package.json
+    npm init -y <=== the dash y is so that we dont have to fill out al of the default settings
+    when doing the settings it will ask for version number <== we put version 1.0.0 if it is ready to ship otherwise something less like 0.0.1
+
+    we wont have to remember any name of the dependencies that we have in our app when we create a package.json file it will track all of our dependencies
+
+    third party library ====> npm i --save underscore ====> npm i --save express
+
+    after installing our third party libraries the will be listed in our package.json as a property on our dependencies object.
+
+  very rarely going to add a dependency name
+
+  we have to remember to --save in order to put the dependency under package.json
+
+  if we have an error that is labeled cannot find module it must mean that we forgot to --save our module
+
+  If we want to get somethijng our of node_modules we dont use the './' period slash
+
+  only when we are reffering to a folder we shall require the folder path
+
+How to use node as web server
+
+  DNS - Domain Name Service <=== take domain name and find the name as a service
+
+  trace route shows us all the steps/stops along the way
+
+Applications - what makes applications is data
+  If you are not paying an application for a product - you are the product - advertising
+
+facebook sells you to advertisers digital fingerprinting
+
+we attach data onto the url- the data is the swappable parts - the 'id'
+
+first place we store data is url parameter
+query - is '?'
+data is not hardcoded it is volatile
+
+third way we can pass data is through the body {
+
+}
+
+query is like writing on the back of an envelope while the body is the piece of paper that goes inside
+
+paramater, query, and body
+
+ways that we can get everything to communicate over the internet is 'strings'
+
+all languages speak string - specifically a string of JSON - standard format that everything agrees on
+
+everything when it goes through the internet is turned into a giant long string and when it gets to the server the server unpacks it and puts it back in a format you can use
+
+now we use express and body parser that are going to do those things for us
+
+express might go to mongo might go to sql
+
+express is just an entry point to let us know what we are doing with our request
+
+Building a Simple Express App
+  var express = require('express') <=== after an npm i express --save
+    -see require you need to ask yourself if you installed
+
+  var app = express(); <=== this is going to give us a web app
+    then we can tell our app to listen
+      app.listen(3000);
+        why do we invoke express? <=== because express told us thats how we have to get an app.
+
+var express =  require('express')
+var app = express();
+app.get('/', function(req,res){ <===== app.get will be our entry point where if the params is '/' we will response in the function
+
+});
+
+app.get('/kittens', function(req,res){ <=== our entrypoint to '/kittens' <=== seems to have request and response arguments
+
+});
+app.listen(3000)
+
+^ format is known as 'express' format ^
+
+req is request here we are going to find parameters, queries, body, headers
+
+res is how we are going to response what we are going to send back
+
+get, post, put ,delete
+
+Body Parser
+  when we get the body in node it is goins to be a giant string
+  another third party library ===> 'body parser'
+
+Body Parser - npm install body-parser
+  var bodyParser = require('body-parser')
+app.use(bodyParser.json();<==== here we are telling our app to use body parser and put our data into readable format from 'json'
+app.get('/kittens', function(req,res){
+  req.body  <=== automatically parsed in our app from 'bodyParser.json()'
+})
+
+we have 64,000 ports on our computer
+
+app.listen is listening for any changes
+
+so that we do not have to kill our app and then restart it everytime we are going to use nodemon which will watch for changes in our app
+
+npm install nodemon -g --save
+  we are storing it in our app data so that we can use it anywhere in our computer
+  gulp, webpack, live-server were also installed there
+
+nodemon - is basically liveserver for our node known as 'node monitor' we will use it instead of 'node' as a command
+
+we need a web request to store our data for other web developers out there by using 'api' for sending data
+
+app.get('/api/books', function(req,res){
+  res.json([       <====== here we are using .json() to send our object back as data
+  {
+    title:'the great divorce',
+    author:'CS Lewis'
+  },
+  {
+    title:'the great divorce',
+    author:'CS Lewis'
+  },
+  {
+    title:'the great divorce',
+    author:'CS Lewis'
+  }
+  ])
+})
+
+postman - another tool that we are going to want 'getpostman.com'
+
+when making a post request we are going to be sending a json object back because we are being requested for data
+
+app.use(bodyParser.json()) <==== run this on every app that we get so that everything that we get will be json and we will parse it from json
+  we make the rules since we are the server <=== we are returning our object to be in JSON
+
+without body-parser we dont get req.body <=== we can use it since we installed and invoked it in our app under functions
+
+ if our request ever hands we likely forgot to add a res.end()
+
+ how do you send things in the body????
+
+res.end()? <===
+
+postman is just chrome reskinned
+
+we do not res.send on post requests

@@ -1,0 +1,12 @@
+<div>
+  <h2 ng-click='alert({message:message})' ng-model='message'><u>{{message}} <===== message</u></h2>
+
+  <div ng-click='alert({message:buttonMessage})' ng-model='buttonMessage'>{{buttonMessage}}</div>
+  <h1 ng-click='alert({message:newMessage})' ng-model='newMessage'><i>{{newMessage}}</i></h1>
+
+  <div ng-repeat='guest in guests'>
+    <p>
+      {{guest}}
+    </p>
+  </div>
+</div>

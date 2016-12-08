@@ -1,0 +1,14 @@
+Firebase has its own log in system.
+Will host your files
+
+We can hook up a browser to where it gets in data straight from fireBase
+
+Browser can link directly to database(firebase)
+
+No server needed as a middleman between the browser and firebase
+
+Real time and scales extremely well to great amounts of users
+
+Angular fire - what we will most of our interactions in. It is an intermediary to angular and firebase-app
+
+ 

@@ -1,0 +1,40 @@
+IIFY's <==== immediately invoked functions <==== context- (function(num){return num})()  <====we wrap the whole function in parentheses. will be treated as its own statement.
+
+CALLBACKS
+  first-class functions take in other functions as parameters and invoke them.
+
+SYNCHRONOUS  code runs in sequence one after the other
+
+ASYNCHRONOUS does not have to wait we can continue to run our program.
+
+Javascript is able to defer certain things - ASYNCHRONOUS
+
+ASYNCH code takes statements outside of normal program flow
+
+  What makes JS asynch is that it will not run functions right when we run the page from top to bottom
+    instead it renders
+
+  when page load browser sees html and then sees script tag and will render through the script tag
+
+  Asynchronous means it will hold off until later
+
+  Blocking is only doing on thing at a time.
+
+  asynch - we have a feature we are able to go back and demonstrate it later.
+
+Stacks and queues
+
+  queues are conveyor belt - js queues
+
+  stacks are grabbed from the top
+
+AMAZON web services - store data in the cloud, we can use them to send a function and they will send the results back(super-computer)
+
+CLOSURES
+
+  inner functions have access to the parent functions parameters and variables.
+
+Design pattern -
+
+
+Prototypes prototypical inheritance

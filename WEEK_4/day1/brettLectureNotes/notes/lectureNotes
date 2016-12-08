@@ -1,0 +1,69 @@
+Routing and templating , u-router, stateparams
+
+Angular routing with ui router
+
+  Review- controller , scope, services, promises
+
+  promises a pattern a way we can use to get data back from an asynchronous request and control where that data goes
+
+  SPA- single page application
+
+non-spa & SPA ===> biggest difference is the way our browser interprets directions
+Routing - []
+
+  non spa passes a file name into the URL
+  SPA application passes a statename into the url after '#'/
+ Hash routing - browser going to navigate to page domain <=== anything after that are specific instruc on where to navigate
+ without the hashtag it will tell thr browser that it is an actual file
+ browser will ignore hashtag but javascript will recognize it
+
+
+SPA
+  URl bar isnt a path to a file
+  it describes a state
+  states can be nested
+
+javascript understands that everything after the '#' in the URL is for javascript to change the states
+
+information after the hashtag will be ignore by the browser
+javascript takes everything after '#' as data
+url will send a string to javascript and javascript will read it and find a state with the same string (.state) to load
+
+SPA URLS ARE FAKE!
+  everything after'#' is hiacjked by angular
+
+deep linking- our url bar even though not nav to spec file , it should still contain info bout state of application
+
+Benefits of routing
+  shareable links (deep linking)
+  separations of concerns
+  more, robust, complex applications
+
+UI ROUTER
+  the defacto routing solution for angular
+  alternative to ng-router <==== ui router seems to have more features
+  UI router does not come with angular so it will need to be loaded in a script tag (has to come after angular CDN)
+      ANGULAR link
+        ROUTER link
+          APPS reference
+
+app.js
+  ['ui.router']<====== extra array of angular modules that can be loaded into angular <=== order of dependencies does not matter
+  .config <=== configuring angular application <== will apply to whole app<==== will take a callback function($stateProvider,urlRouterProvider)
+  $stateProvider is used to configure our states in the application
+    .state <=== should contain a state<=== state will have a name and is also an object.
+    what router will do is look at URL bar and what ever comes after tthe hash loads the state that matches URL in our config
+
+NPM <=== node package manager <=== installing ui-router NPMjs.org
+NPM init -y <==== once for every project
+NPM install angular --save <=== brings in a node_modules folder<=== contains an angular folder which hahs different versions of angular
+never add node modules to version control <=== we create a file called .gitignore and add the name of the file
+DS_store <==== we can add this to .gitignore
+we can avoid alot of huge mess's by ignoring node_modules
+
+RESOLVE:
+  resolve will be an object and it's property will be the name of the resolve.
+  the resolve will stop the app from routing until the data is retrieved.
+  the property in resolve will be the name of our resolve <==== we can inhereit the resolve by injecting it into the controller that we are using at the moment
+  we will pass in (as a value ) the name of our resolve that we injected into our controller(just like injecting a service) and catch the value inside of the scope object using a name
+INSIDE OF OUR RESOLVE OBJECT - we need to pass the service name we are using as a parameter inside of our function (which is the 'value' of our resolve)

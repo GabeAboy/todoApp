@@ -1,0 +1,124 @@
+Directives
+
+directives can be wrapped inside of something really simple
+
+we can reuse directives and store them as functions and
+
+elements
+
+node server requires two directives
+
+We can make html from directives
+
+takes in different values
+
+directives are really complex to set up but once we understand what they
+do they are really simple
+
+use a directive when we want to do something a little more specific
+
+if we add scope in our directive it will not override our scope in our main controller
+
+THE LECTURE
+=====================================
+
+biggest thing between controller and directive <==== we have to return something from out callback function
+which will be an object with very specific key:values which will ultimately describe what this directive is going to be
+{
+restrict:value of a string a,e, or ae,
+template:'<div class="myDirective"></div>'
+a<==== attribute on some HTML
+    example. ====> <div my-directive></div> <====== html does not accept camel case so angular added normalization which makes our string snake-case/kabob-case
+e<===== stands for element
+ae <====== stands for both either or
+template<=== represents some HTML markdown that we can add to our browser
+scope:{} <===== will assign a private scope <==== different bindings we can put insude of our 'scope:'<===
+    '=' <=== binds local scope property to parent scope property <=== two way model bonding
+    '&'<==== function binding
+    '@' <==== what string binding
+    '<' <====== one way binding
+}
+parent controller is suppose to pass value to directive
+
+1.we will use directives for some code that we want to use in multiple places
+
+2. or we can use it if we want to privatize or information
+======================================
+
+Brett's video lecture again dm14 directives
+=============================================
+directive we have to return in our callback function is an object with specific key value pairs
+
+return {
+  restrict:'AE',    <====attribute and Element
+  template:'<div class="party-button"> Party Time!</div>'
+  scope:{
+    message:'@'   <==== the '@' symbol in angular represents a string.
+  }
+}
+
+in html we must convert our text from camelCase to kabob-case/snake-case
+html cannot interpret a capital letter from a lower case letter
+
+angular team added normalization which is when camelCase text can be rendered by html if we place it in snake-case.kabob-case
+
+The templateUrl that will be defined by the name of our directive will be placed in our index.html file
+The template.html will have inherit the scripts and links of the index.html
+
+the directive also inherits it's parent's controller if the directive is within the scope of the controller
+ ==============================================
+
+ private scope
+ ===============================
+if our directive is nested inside the scope of a parent's controller anad we want to change our
+value of our scope to differ from the parent scope value, we would need need to create our own scope.
+
+we need to kind of give our directive it's own controller
+
+we do this by going into our directive object that we return and add a property named 'scope'
+the scope property will be an OBJECT.
+
+What we are doing when we add a scope property to our directive inside of the object that we are returning
+is we are giving the scope property a value of an object.
+Inside this object is what is referred to as a isolate scope.
+It is isolated entirely from it's parent scope.
+This will over-ride the parent's scope object from the parent's controller
+If the isolate scope returns undefined nothing will show
+
+return {
+restrict:'AE',
+templateUrl:'partyButton.html',
+scope:{
+message: '@' <===here we are sayuing that inside of our isolate scope we want to set the value of message inside of the name of our directive scope of the attribute
+}
+}
+
+the value of the 'key' inside of isolate scope object will be equal to it's internal value(isolate $scope object) and it's attributes/elements value
+
+when we want to replace the value of the directive we can write as isolate scope and place our values in there
+
+
+return {
+restrict:'AE',
+templateUrl:'partyButton.html',
+scope:{
+message: '@partyMessage' <=== here we are saying that we want our directive to looks for our scope object containing message with the value of a string through what ever partyMessage is.
+}
+}
+scope the value is going to be message internally, and its going to be what ever partyMessage is equal to
+
+if we dont want to grab a string as the value of our key in our isolate scope object, we replace the '@'(represents string) with '=' which will equate the value
+equal to the variable designed.
+
+two way binding is used with the equal sign '='
+
+if there is three items in our isolated scope there will need to be three items in our directive element/attribute
+
+link: is going to be another property just like restrict:, templateUrl:, or scope: .
+
+link: function(scope,elements,attributes){
+
+}
+link is a callback function that takes predefined arguments.
+
+$ <==== means it is a build in angular service

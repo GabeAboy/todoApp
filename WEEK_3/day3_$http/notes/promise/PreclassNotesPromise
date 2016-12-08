@@ -1,0 +1,132 @@
+Promises(deferred) <=== a very simpple tool for asynch dev.
+
+  angulars promise implementation was inspired by Kris Kowals Q implenentation.
+
+  a callback approach called 'inversion of control.' function accepts a callback instead of a return value saying' dont call me ill call you.'
+
+  Q using deferreds <=== var deferred = Q.defer()
+    deferred <=== can be resolved with a value or a promise.
+
+      var deferred = Q.defer()
+      FS.readFile('foo.txt', 'utf-8', function (error,text){
+      if(error){
+      deferred.throw(new Error(error));
+      } else {
+      deferred.resolve(text)
+      }
+      return deferred.promise;
+      })
+
+      ex.
+          function delay(ms){
+          var deferred = Q.defer();
+          setTimeOut(deferred.resolve, ms);
+          return  deferred.promise;
+          }
+REST stands for represtational state transfer , it relies on stateless, client0server, cacjeable communications protocol -- and in virtually all cases, the HTTP protocol is used
+REST is an architecture stylrs for designing networked applications
+   IN MANY ways , word wide web itself based on HTTP for can be viewd as REST-based architecture
+
+  Restful apps use HTTP requests to post data or update, read, delete. Thus HTTP for all four CRUD operations.
+
+  Rest is lightweight alternative to mehcanisms likeRPC (remote PRocedure calls)
+
+  REST is not  a 'standard'
+  Representational State transfer. <===== ReST
+      -note that ReST is actually used with two meanings, subtly different from eachother which can be confusing
+
+      The pure meaning is the archtiectural style which os dindependednt from HTTP and the Web It can be used w HTTP and the Web but doest have to be
+
+      Real world meaning most commmon w the industry is how REST is used in practive. HTTP based and w standart web servers.
+
+      REST is non-XML-based web-based RPC but it is also a design philophy and architecture
+
+
+Javascript promises and AngularJS $q Service
+
+PRomise (Deferred) Motivation
+
+What are Promise and Deferred ?
+
+  A deferred represents the result of an Asynch opertation. It exposes an interface signaling the state and teheresult of the operation it represents.
+  It also provide a way to get the associated promise instance.
+
+  When creating a deferred it's state is pending and it doesnt have a result. When we resolve() or reject() a deferred it changes states to resolved or rejected. The results from deferred are then passed onto promise as a status and value are passed to promise.
+
+  Those interactions will only happen after deferred rejected or resolved.
+  By using promises we can easily create an asynch operation before even decide what going to happen after resolve
+
+  While deferred has methods for changing the state of an operation a promise exposes only methods needed to handle and figure out the state, but not methods that can change the state. this is why a function returning a promise and not a deferred is good practice. This prevents external code from affecting the state of an operation.
+
+How to use Deferrers and Promises
+
+  implementing the $q service.
+
+Basic usage <=== create a deferred. <=== var firstDeferred =$q.defer();
+  firstDeferred holds a deferred that can be either resolved or rejecte whenever an asynchronous operation is done.
+
+Resolve and reject a deferred
+    example:
+         async(function(value) {
+         firstDeferred.resolve(value)
+         }, function(errorReason){
+         firstDeferred.reject(errorReason)
+         });
+
+         since $q's resolve and reject mthods dont depend on a context in order to work we can simply write.
+         example:
+            async(firstDeferred.resolve,firstDeferred.reject)
+
+Taking promises our of firstDeferred and assigning operations upon success or faillure is pretty easy :
+    using the promise :
+      var firstPromise = firstDeferred.promise;
+
+    firstPromise
+      .then(function(data) {
+        console.log('first prom succeed', data);
+      }, function(err){
+        console.log('first prom fail', err)
+      });
+
+        keep on mind that we can assign the succes and failure operations rightt after createing the deferred (even before calling to async()) and that we can assign as many operations as we like:
+
+        var anotherDeferred = $q.defer();
+anotherDeferred.promise
+  .then(function(data) {
+      console.log('This success method was assigned BEFORE calling to async()', data);
+  }, function(error) {
+      console.log('This failure method was assigned BEFORE calling to async()', error);
+  });
+
+async(anotherDeferred.resolve, anotherDeferred.reject);
+
+anotherDeferred.promise
+  .then(function(data) {
+      console.log('This ANOTHER success method was assigned AFTER calling to async()', data);
+  }, function(error) {
+      console.log('This ANOTHER failure method was assigned AFTER calling to async()', error);
+  });
+
+assign only success or failur callback to promise'
+
+Promises can chain values and are always resolved after the callback occurs with the returned value
+
+promises chaining
+
+$q.reject(reason) example: sometimes we need to return a rejected promise. Instead of creating a new  peromise and rejecting it, we can use $q.reject(reason) returns a rejected promise with a reason
+
+    var promise = async().then(function(value){
+    if(isSatisfied(value)){
+    return value;
+    } else {
+    return $q.reject('value is not satisfied')
+    }
+  }, function(reason){
+    if(canRecovered(reason)){
+    return newPromiseOrValue
+    } else {
+    return $q.reject(reason)
+    }
+    })
+
+use $q.when(value)

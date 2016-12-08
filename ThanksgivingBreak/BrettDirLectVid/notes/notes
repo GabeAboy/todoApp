@@ -1,0 +1,54 @@
+Isolate Scope
+We want our directive to have its own controller (not the parent contr)
+
+we will give it a scope property
+
+which has the value of an object
+
+scope: { }
+
+now we want our directive to have a different values <==== have a different 'message' scope
+
+party-dir <==== going to have it's own controller
+
+we will give it scope:{} <==== giving it an isolate scope. <== isolated entirely from parent scope
+
+we want to give party-dir it's own custom message property on the fly like this ====> <party-dir message='It\'s that time again'></party-dir>
+                                                                                      <party-dir message='Party of all Parties'></party-dir>
+
+the value of our 'key' in our 'scope' object will be bound to our view, our isolated scope, and our template
+
+We changed our value of scope.message (in our iso scope) by assigning the value of the 'key' (message) to the value of a string at whatever attribute we assign as the 'value'
+
+seems as though iso scope <==== refers to modifying element attributes ? <== must check
+
+When assigning 'key' : '&' if there are any parameters that are being from the 'tmpl.html'.key the key must pass the arguments in an object to the function that key is bound to ==> alert({key:value/model})====> the bound function will then accept the key that is passed in as a parameter which holds the value of the model that was assigned in the tmpl.html and the 'key' will be defined in the index.html as an attribute in our directive. The function will then be invoked passing in the keys (from tmpl.html) as arguments and the function defined in our parent controller will be invoked.
+
+FOR EVERY ITEM THAT I HAVE IN THE ISOLATE SCOPE, THERE MUST BE AND ATTRIBUTE ON THE DIRECTIVE.
+
+'=' means two way binding
+
+link: function < ==== we use the link function whenever we want to manipulate the DOM
+
+link is another property on the directive that takes a callback function, this calback function is going to be different from other callback functions in angular
+most callbac functions we can inject dependencies through them
+
+=======================LINK FUNCTION PREDEFINED ARGUMENTS=======================================
+link will actually be called with predefined arguments <=== these arguments will be scope,element,attribute
+========================================================================================================
+
+element in scope represents the element that is created in the directive
+
+when using ng-repeat we are creating a new scope<==== ng-repeat has it's own isolate scope
+
+.find()<==== grabs all specified elements
+
+.children()<==== grabs all children
+
+we can also bring in a controller into our directive... Why would we need another $scope? <==== with the controller we can bring in dependencies into our directive such as our 'service'
+
+The link should take precedence over our controller <=== i believe it may have something to do with how it manipulates the dom
+
+If we want to manipulate the DOM we use the link function
+
+if we want to set some values,data, and logic and set bindings we use a controller in our directive

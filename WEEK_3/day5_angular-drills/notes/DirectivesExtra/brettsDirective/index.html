@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+  <head>
+    <meta charset="utf-8">
+    <title>Brett's directive </title>
+    <link rel="stylesheet" href="./style.css" </link>
+  </head>
+  <body ng-controller='mainCtrl'>
+    <party-button party-message='custom message number 1' button-message='partyButtonMessage'></party-button>
+    <party-button party-message='custom message number 2' button-message='message'></party-button>
+    <party-button party-message='custom message number 3' button-message='partyButtonMessage'></party-button>
+    <!-- <party-button button-message='partyButtonMessage'></party-button> -->
+    <!-- <party-button party-message='custom message number 3'></party-button> -->
+    <!-- <party-button party-message='custom message number 3'></party-button> -->
+
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="controller.js"></script>
+    <script src="brettsDirective.js"></script>
+  </body>
+</html>

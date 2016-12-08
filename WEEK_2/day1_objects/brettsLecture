@@ -1,0 +1,72 @@
+JAVASCRIPT: OBJECTS AND ARRAYS
+
+WAYS TO CREATE OBJECT
+
+  new Object(); < ====== new keyword <===== creates new object out of thin air, assigns 'this' to the new empty object, creates a return 'this', creates dunder prototype property linking obj to constructor
+
+
+OBJECT LITERAL
+
+  creates new object explicitly
+
+    STORING PROPERTIES//VALUES IN VARIABLES
+
+      var chosenProp = 'breed'
+      var chosenVal = 'pitbull'
+      var newProp = 'age'
+      var newAge = '49'
+
+          var dog = {
+            name: 'pepperoni',
+            breed: 'rat terr'
+          }
+
+              dog[chosenProp] = chosenVal < === breed:'pitbull'
+              dog[newProp] = newAge < === age:49
+
+    Spaces will throw an error/ same rules as variable names.
+
+DELETE OPERATOR ~ used to delete properties from object
+
+  cannot be used on  an array <=== will cause strange behavior <=== turn index into 'null' <=== delete arr[2] // [1, 2,'', 4]
+
+METHODS ~ function attached to an object
+
+FOR IN LOOPS
+
+OBJECT.METHODS!
+
+  Object.values(cat) < ===== gets all the values in cat ~ need to check on MDN to be exact
+
+  Object.assign({}, party, calculate); <===== party & calculate being two different objects
+
+  hasOwnProperty('propName')
+
+
+ARRAYS ~ fundamentally and object Array.isArray([]) // true <=====> Array.isArray({}) // false
+
+  Array methods push,pull,unshift,shift change our original array.
+
+    Comparing arrays and object
+
+      Objects // no  <======= Order matters ====> Arrays // yes  =======
+
+  Array Method splice & slice
+
+    splice arguments (where to start splicing, how many to take out, what to replace with) <===== changes the array
+
+    slice(start, end) <==== does not change the array <=== starts slicing after 'start' index & keep going until index 'end'
+
+      slice we can go backwards from the end arr.slice(-1..-2..-3..-4..-5..etc) <===== slice(1,-1..-2..-3..) //starting at index 1 and -INDEX
+
+    WE USE SLICE IF WE DO NOT WANT TO ALTER THE ORIGINAL ARRAY
+
+    arr.includes(elementInArr) <===== newer javascript method arr.splice(arr.indexOf('jony'),1,'jane')
+
+    arr.filter <=== returns boolean look up mdn
+
+    arr.reduce(function(a , b) { return a + b},10) <==== adds up all items in array accepts a second argument stating which number and what to start with
+
+    regular array methods are slower than for loops
+
+    for (var i =0, len = arr.length; i < len; i++)

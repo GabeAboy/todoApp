@@ -1,0 +1,54 @@
+WHAT IS THE BOX MODEL?
+
+
+
+goal is to know what html is and css is.
+
+how they work together.
+
+!Doctype Html <==== tells the browser that this is the html page.
+
+meta tag is information about information
+
+utf-8 is binary coding
+
+body tag is all the things that will be rendered by our page
+
+
+HTML and CSS
+
+hypertext markup language
+
+html gives structure like a house frame.
+
+gives shape and structure
+
+html elements look to other elements to predict what their shape should be
+
+% vs Px ===> pixels is more specific, % looks to the parent container
+
+we can start using semantic tags  ====> <section> <footer> <header>
+
+CSS PROPERTIES ===> giving our pages rules
+
+position:relative ======> is what we use for position 'absolute' to attached/attract itself to!!
+
+****vertical-align? how to use? we use 'line height'
+
+box-sizing : border-box <====== it will give us the exact amount of height and width and add padding but track size of content so that it will not be any bigger than i gave it.
+
+border-box ===>w and h include content, padding, and border. NOT MARGIN.
+
+we can use border-box to set as a default setting
+
+****BY DEFAULT everything contains CONTENT-BOX ****
+
+When you set box-sizing: border-box; on an element, the padding and border of that element no longer increase its width.
+
+content-box w and h include only content  .border padding and margin not included.
+
+FLOAT AND CLEAR ====>
+
+view width <===== vw and vh
+
+calc(100%/3) <===== calculate width or more!. css functions

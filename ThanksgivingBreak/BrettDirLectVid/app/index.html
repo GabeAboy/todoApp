@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./style.css" media="screen" title="no title">
+    <title></title>
+  </head>
+  <body ng-controller='mainCtrl'>
+    <!-- <h1>{{message}}</h1> -->
+
+    <party-dir alert='alertMessage(message)' dir-message='Party Time!'></party-dir>
+    <party-dir alert='alertMessage(message)' dir-message='Hello!' button-message='partyButtonMessage'></party-dir>
+    <party-dir alert='alertMessage(message)' dir-message='Party til 6 in tha mornin' guests='partyGuests'></party-dir>
+    <party-dir alert='alertMessage(message)' button='salutation' button-message='partyButtonMessage' dir-message='partytime'></party-dir>
+    <party-dir alert='alertMessage(message)' guests='partyGuests' dir-message='party rarty'></party-dir>
+    <party-dir alert='alertMessage(message)' guests='partyGuests' dir-message='whoop whoop'></party-dir>
+    <party-dir alert='alertMessage(message)' guests='partyGuests' dir-message="Ranchos Huevos"></party-dir>
+    <party-dir alert='alertMessage(message)' guests='partyGuests' dir-message='Hot diggity Dogg'></party-dir>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+		<script src="app.js"></script>
+		<script src="controller.js"></script>
+		<script src="directive.js"></script>
+  </body>
+</html>

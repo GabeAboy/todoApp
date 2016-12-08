@@ -1,0 +1,58 @@
+Javascript Fundamentals
+
+Client server model
+  distributed system
+
+word processors <==== operating system(server)<====>file1.docx
+
+word processor =====> renders =======> page
+
+works in binary ===> 1's and 0's
+files can be remote computer anywhere in the world.
+
+all files don't finish loading at the same time.
+
+protocol ===> http
+
+Domain name ===> google.com
+
+/index.html ===> File
+
+browser fetches 6 files at a time
+
+by default, JAVASCRIPT BLOCKS meaning it will freeze the whole page when a script tag is displayed and then run the script tag and then after the script is done running then the page will continure running
+
+script tags go at the bottom of the body so that everything else loads before the script tag runs because the script tag blocks.
+
+prevent script blocking HTML5<==== async attribute loads all javascript files at a time
+
+defer attribute <==== loads at the end of the body
+
+ DOM is critical in making any webpage work
+staging area for all the peices to be put together and set so the browser can start rendering
+
+Debugger is chrome's representation of the DOM
+
+every browser has window.document in order to accesss the window in browser
+
+if we are checking data we can set it to null to let us knoow wer already checked it
+
+null means nothing ON PURPOSE
+
+cases in comparing a str and a num it converts the num into a str
+
+everything can be converted into a str
+
+FALSE VS FALSY
+
+0, '', undef, null ,false , NaN
+
+Keep it DRY
+don't repeat yourself
+
+SCOPE
+=======================================
+
+
+
+BEWARE GLOBAL VARIABLES

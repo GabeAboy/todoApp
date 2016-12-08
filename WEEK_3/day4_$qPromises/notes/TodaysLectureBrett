@@ -1,0 +1,70 @@
+Promises and $q
+
+    Discussion:
+      AJAX- asynchronous javascript and xml <===using javascript to fetch data<===sending asynchronous requests using javascript
+      Rest API popularity- a restful api would have the option of GET < PUT(Update) < POST(Creating new data that does not exist) < DELETE <=====protocol names
+      Other styles API
+
+    Asynchronous Javascript - single threaded and can only parse one piece of data at a time.
+
+        1-store variables- nanoseconds
+        2
+        3-get- nanoseconds
+        4-show- nanoseconds
+        5-load- nanoseconds
+
+LECTURE
+================================================================================
+    $q for angular is their promise engine created from a library that is called Q created by Christ Kwahl who is a wizard
+    REVIEW
+    =========================================
+    What is a service? what is it's purpose?
+      a way to control our data.
+
+    what is a controller?<==== how we choose to display our data in the view
+
+    how do services and controllers interact <===== controller is how we bring our data to the view
+
+    what is REST? < ==== how we decide to organize our requests
+
+    How can you make an AJAX call with Angular? <=====  $http is angular's version of AJAX which returns a promise and is invokes a callback when the promise is resolved using '.then()'
+
+    What are promises? <====== a way to exchange asynchronous behavior
+    ===========================================
+
+    Javascript is a single-threaded language <=== meaning it will only do one thing at a time. it wont do two things simultaneously
+
+    thread1===>request1===>request2===>request3===>
+
+    How does a single threaded language do asynchronous operations?
+
+      event loop, the queue, the stack <=== javascript only does one thing at a time however it can pass something off and remember to do it later once the callback is triggered
+
+    ===========================================
+    Javascript is good at procrastinating
+      it can say ill get that later but always gets to it <===== always does what it says
+
+    Promise libraries can help us control our data
+
+    a module is a container for storing parts of an application <=== a module defines an application
+    ============================================
+    Promises are 'thenable'
+    If the value is a promise then we can call .then(), just like if we have an array we can call .push() on it
+
+    with a promise library we can bring in .catch(function(error){
+                                              // Handle any error from all above steps
+                                            })
+
+    Promises's are a way to handle our data
+
+    Return multiple promises with q.all([person.promise,homeworld.promise]).then(function(res){
+    var _person = res[0]
+    var _homeworld = res[1]
+    _person.homeworld = homeworld.name
+    })
+================================
+    .catch(function(err){
+    console.log(err.statusText)
+    })
+====================================
+method:'JSONP' <====== changing method to JSONP because JSONP is more secure for the user<=====safetly transfers JSON style data without exposing our users to cross origin requests<===== lookup |google|

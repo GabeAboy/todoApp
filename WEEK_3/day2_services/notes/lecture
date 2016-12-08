@@ -1,0 +1,19 @@
+Services
+
+  dependency injection < === practice of registering constructor functions with a central source by name
+
+      service1 can also use service2 which will come wherever service1 is injected
+
+      'this' <=== when we are building a service <=== a service is a contstructor function that is building and object
+
+      only get one copy of a service;
+
+      controller is to collect all data for the view and construct the data for the view
+
+
+When adding a new property to an object without assigning it a value, the value will returned undefined.
+  Now if we want to change the value to a boolean we can say 'friends[userIndex] = !friends[userIndex]' which will change it to NOT UNDEFINED which is true and if we keep activating this action it will continually change the value from true to false
+
+  jquery can either be used in it's very own js file or as a directive in angular when used with angular in an app.
+
+  

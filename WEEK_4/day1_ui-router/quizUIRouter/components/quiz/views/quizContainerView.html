@@ -1,0 +1,11 @@
+<h1>{{quizName}}</h1>
+<!-- <h2>{{quizQuestions}}</h2> -->
+<hr>
+<div ng-repeat="question in quizQuestions">
+  <h2>{{question.title}}</h2>
+  <div ng-repeat='choice in question.choices'>
+      <h3>{{choice}}</h3>
+  </div>
+  <!-- <h3>{{question.choices}}</h3> -->
+  <hr>
+</div>

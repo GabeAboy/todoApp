@@ -1,0 +1,119 @@
+HTML CSS DAY 2
+
+FLOATS
+
+Positioning
+  absolute
+  relative
+  fixed
+  static
+
+static
+-everything has position static by default. basically any html element that is not set yet.
+
+fixed
+- tells a div to position to a viewport as if there is a shade of glass between you and your website & it sticks to the shade of glass.
+fixed position does not affect the position of other elements.
+
+sticky
+- when you scroll down to a different section of the  screen and then the element sticks.
+
+
+relative
+- because the position is moved the original place of the element(pos:rel) is reserved.
+we can use top,right,bottom,left to adjust our element
+we can use relative position for a .click() method because it has reserved it's original position.
+
+absolute
+- moves element out of the original flow of the page and original position is not reserved.
+does it affect other elements?
+No other elements are not effected by position absolute.
+absolute sort of floats above other elements.
+we can use bottom,top,right,left to move it
+position absolute finds the nearest parent element has relative:position
+if none of its ancestors have the position of relative it will position itself to the viewport
+absolute will position according to any parent element with the position: absolute or relative.
+
+
+DISPLAY
+  block
+  inline
+  inline-block
+  flex
+  none
+
+kind of like a cousin of positioning
+
+BLOCK
+by default element will have a display of block. will use box-model.
+by default it will take up a whole block across the page. completely block off left and right of the page.
+margin:auto will set block element to center. it is free to move anywhere within that block.
+push other blocks out the way
+
+INLINE
+just going to be text and content.
+box-model goes out the window.
+allows elements to sit next to eachother. will be only as big as the content
+doesnt  compensate height and width
+
+INLINE-BLOCK
+element will behave as an inline element however have a height and width.
+won't block left and right. be inline with other blocks.
+
+FLEX
+not supported by all browsers
+flexercises tonight 11-2
+
+NONE
+no dimension
+browser will recognize but not render the element
+will show up in the DOM but not on the page.
+uses include using javascript to bring the content to display on page after not displaying.
+visibility:hidden still occupies space on the screen but cannot be seen.
+
+
+OVERFLOW
+  Hidden
+  Auto
+  Scroll
+
+content that will overflow will not affect any elements. it will appear to spill over the sister and brother elements.
+
+AUTO
+will adjust size of element to the content
+
+HIDDEN
+content will not be shown and will be hidden in element
+
+SCROLL
+will ad a scroll bar to the hidden content
+
+
+WIDTH/HEIGHT
+
+max-width is the maximum width of the element at the given coordinates of the browser page. it will stop its width at the coordinates.
+look up mdn max-width
+
+min-width is the amount of which we want our element to stop shrinking at given width.
+look up mdn min-width
+
+max-height not as flexible
+
+
+SPECIFICITY
+how does the browser know what rules to follow?
+
+  SPECIFIC RULES
+    type selectors
+    class selectors
+    ID selectors
+
+
+CENTERING -vertically & horizontally
+display:block;
+position:absolute;
+top:50%;
+left:50%;
+    box's top left corner will align to the center of the screen so here we must use transform when we dont want to use flexbox
+  transform: rotateY(-50%) rotates on y axis
+  transform: translate(-50%,-50%) moves box element half of where it is originally positioned

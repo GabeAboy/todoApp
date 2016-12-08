@@ -1,0 +1,51 @@
+Ui- router and states
+
+when in home state state what it looks like underneath and the controller
+
+we load index page one time.
+
+  1.we need to go into js and put the things in the folder
+
+  2.where we actually at
+
+  3.what we are putting in
+
+1.We need to bring in library for ui router
+
+2.We place the module name in our module bracket 'angualar.module('myApp',['ui-router'])'
+  some other ones are ng-animate, ui-bootstrap, quite a few
+
+3.Tell it where to show on the screen ===> <ui-view></ui-view>  <==== this is what ui-router is looking for
+
+4.we need to put more info into our app.js file
+    we are adding
+
+    .config(function($stateProvider,$urlRouterProvider){
+    $stateProvider
+      .state('home', {
+          url:'/',
+          template:'<h4>we are home </h4>' <=====to put a file here we replace 'template' with 'templateUrl' and put in our filepath<====refactoring
+          }
+      })
+    $stateProvider
+      .state('home', {
+          url:'/',
+          templateURl:'./list.html',
+          controller: 'listController' <==== do we need to put the file path with .js?<==== maybe we put the name of our chosen controller
+          }
+      })
+    $stateProvider
+      .state('home', {
+          url:'/details/',
+          templateURl:'./list.html',
+          controller: 'listController' <==== do we need to put the file path with .js?<==== maybe we put the name of our chosen controller
+          }
+      })
+
+    })
+
+    http://1234.124.1221/#/ <==== this is deep urls and deeplinking which is creating a subUrl and telling our page anything after this('#') is not going to a new page
+
+  our templates can use angular
+
+  master-detail patter ===> mastr list than tkaes us to a abigger list full of items

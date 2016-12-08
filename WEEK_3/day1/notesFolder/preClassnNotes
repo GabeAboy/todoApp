@@ -1,0 +1,17 @@
+ngOptions attribute can be used to generate a list of <option> elements for the <select> element using the array of object obtained by evaluating ngOtions.
+
+In many cases, ngRepeat can be used on <option> elements instead of ngOptions.
+
+Benefits:
+
+    more flexibility in how the select's model is assigned via the select as part of the comprehension expression.
+
+    reduced memory consumption by not creating a new scope for each repeated instance.
+
+    increased render speed bu creating options in a documentFragment instead of individually
+
+when item in select menu is selected the array element or obj prop represented by selected option will be bound to the model identified by ng-model
+
+optionally a single hard coded option element with the value set to an empty string can be nested into the select element, the obj will then represent null or not selected option
+
+By default ngModel watches the model reference, not value. this is important when binding the select tot a model that is an obj or collection

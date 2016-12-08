@@ -1,0 +1,35 @@
+ng-if <=== can be used to hide something on the screen ng-if takes it completely out of the html/DOM
+  if not true.
+
+4 primary methods on REST ==> get, put, post, and delete
+
+to make a promise in angular we need to get $q.
+
+$http was saying that it doesnt have the value right now when return a promise.
+
+We use $q.defer() <==== we invoke it
+
+var deferrer = $q.defer();
+
+3 things we need to be able to do ==>
+
+    finish step 1
+    when we make a deferrer we have to return our promise.
+      deferrer has its own promise property.
+
+    .service()'service1', function($q,$timeOut)
+
+
+
+    this.getUnicorn = function() {
+        deferrer.resolve('unicorns');
+    }
+return deferrer.promise;
+}
+
+$q is an angular utility <== orginally made in jquery
+
+$q is a service that helps us run functions asynchronously, and use their return values (or exeptions) when
+they are done processing.
+
+$q constructor <=== streamlined in es6 styles promise just using $q as a constructor takes a resolver function as the first argument.

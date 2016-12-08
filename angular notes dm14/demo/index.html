@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+  <head>
+    <meta charset="utf-8">
+    <title>demo app</title>
+    <link rel="stylesheet" href="./styles.css" media="screen" title="no title">
+  </head>
+  <body ng-controller='mainCtrl'>
+<h1>{{message}}</h1>
+<input type="text" ng-model='friendName'>
+
+<div ng-repeat='friend in friends | filter : friendName'>
+  
+    name: {{friend.name}} | age:    {{friend.age}}
+</div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+<script type="text/javascript" src='./app.js'></script>
+<script type="text/javascript" src='./controller.js'></script>
+  </body>
+</html>

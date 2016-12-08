@@ -1,0 +1,82 @@
+In order to get code ready to ship in production we must minify it and compile it for faster download. Smaller is better
+
+Gulp is a task runner- it is an engine ===> doesnt do anything but make things go
+
+npm is shipped with node - node package manager - way to run js all over
+
+npm i -g gulp-cli
+
+new file must be called gulpfile.js <==== gulp going to look for a file called 'gulpfile.js'
+
+Throw err reinstall dependencies
+
+sourcemaps <=== instead of one hige styles.css the browser will recognize the folder as files that are all seperated
+
+gulp-sass refusing to install as a dependency of itself meaning the name of the json file was the same as the file we downlaod
+
+functions <=== look like a function and invoked like afunction but doesnt work lke a function
+========================================================================================
+FUNCTIONS/@MIXIN <<+==== need @include prior to invoking
+========================================================================================
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.box { @include border-radius(10px); }
+========================================================================================
+we must use @inculde when we include our 'name' of our @mixin
+
+========================================================================================
+EXTEND/INHERITANCE <==== use @extend to extend our classes for further use
+========================================================================================
+.message {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+.success {
+  @extend .message;
+  border-color: green;
+}
+
+.error {
+  @extend .message;
+  border-color: red;
+}
+
+.warning {
+  @extend .message;
+  border-color: yellow;
+}
+
+
+gulp i --save del
+
+require del = require('del')
+
+run 'gulp clean'
+
+gulp clean will remove our dist folder
+
+
+
+
+CLASSES- upgrade to a constructor function
+
+
+'let' < goes off of {}
+
+let is the new bar
+
+sourcemaps is for the debugger - so that we have seperation of concerns - we are going to get one file that mashes everything together
+sourcemaps seperates it for us
+
+'print()' <==== we are going to make an exact copy of our file into our dist folder
+
+babel({presets:['es-2015']})- which we are going to
+
+uglify

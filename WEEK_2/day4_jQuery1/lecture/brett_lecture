@@ -1,0 +1,39 @@
+jQuery
+
+Why use jquery?
+
+  Jquery makes it easier and cleaner to use JS on website
+
+AJAX <===asynchronous javascript and XML <==== allows us to use javascript to retrieve data.
+
+What is jQuery?
+
+  a lightweight, 'write less, do more' Javascript library
+
+  simplifies complex tasks
+
+Library vs Framework <==== jquery is a library <==== like a toolbox/ set of tools used to build
+
+  Framework<=====angular is framework which has certain support structures that must be used. it comes with instructions that must be followed. comes with a convention and is very opinionated about how you build your website.
+
+How does it work? ====> a selector paired with an action
+
+  Selector===> $('p').hide()<======action
+
+Selector <===== jQuery function <==== it can sleect anything using css-like syntax
+
+  #test,.test,p,h1
+
+Use Document Ready
+
+  $(document).ready(function(){
+   $('p').hide();
+  });
+
+Event bubbling and event propagation
+
+  bubbling goes inward towards innermost element propagation goes outward to the outermost element
+
+  we can use stopPropagation to stop propagation at a specified element.
+
+  when we press clic the eventlistener will bubble inwards towards children (rendering all eventlisteniers) and propagate from the innermost child outwards activating any event listeners and returns all calls that are in the document.

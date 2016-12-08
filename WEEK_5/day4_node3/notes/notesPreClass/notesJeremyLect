@@ -1,0 +1,331 @@
+The objectives for today
+
+  -Serving static files
+
+  -cors
+
+  -express sessions
+
+  -security basics
+
+  -using config files to hide keys
+
+  -connecting to angular
+
+in rest protocol when you use params its usually for id's to find subsets of informations
+
+  movies.com/api/movies/category/horror?yearGt=2003&ratingLt=3 <==== how do we use these query filters
+
+  question mark 'query' starts the filter
+
+  [domain.com]/folder/folder/file/folder/file
+
+when we use express we overwrite the file functionality
+
+:id <====req.params <==== how we access the params in N0de
+
+query starts after the question mark <==== access it with req.query.id <===== ?id=3
+
+queries run off of a key:value pair <==== seems as though queries build an object with the query id as the key and the value = to what the value of the key is
+
+url's are limited to 2,048 characters
+
+req.query builds an object
+
+?yearGt=1999 and ?yearLt=1989
+
+[client]<====strings=====>[server]<====strings====>[client]
+
+important things to thijnk of when making servers
+  -security
+    protect ourselves and our data
+  -client-side ==> browser
+    click network and click refresh will telel you almost all the paths of where your page came from
+
+client goes to server, server says hey i wanna make money so i put ads on this page , ad goes to some other server to get
+things, server ends up being a bad place with bad things. You won this sweepstakes. bad place with bad files.
+
+###Cross origin response security - CORS for short
+
+so far we've had to set our own headers like this example below.
+
+  addHeaders: function(req, res, next) {
+      res.send(200).set({
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Methods': 'OPTIONS, GET, POST, PUT',
+              'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+              'X-XSS-Protection': '1; mode=block',
+              'X-Frame-Options': 'SAMEORIGIN',
+              'Content-Security-Policy': "default-src 'self' devmountain.github.io"
+      }
+  })
+cross origin response security
+
+headers - basically a way  that says i went to this server to get information , the information that i really got did
+it really come from here.
+Or did it come from a bad place that came from the middle.
+
+setting origin we have done with setting headers
+
+we can set up CORS so it will make things nicer for us.
+
+how does cors know what is a bad place - client makes request with headers and remembers i went to site a.com it actually
+goes to a.com it adds it's own headers with the right thing and gives the response with the right thing and validates
+ the response that says it really came from a.com
+
+the user only trust  things from a.com so if you didnt come from a.com we dont trust you and you are instantly blocked
+it will fail to load anything that came from anywhere outside of that origin request
+
+you can get a man in the middle someone trying to redirect you or someone trying to inject into our response
+
+we also have an ok place <==== a.com and then i want to get something from the ok server and then the bad place will try to go back
+
+when we set up cors we can give it options we can configure things
+
+we can go in the and say hey a.com is vouching for the ok place
+
+ a.com is going to say hey you asked for stuff from me and i asked for stuff from ok place that i want you to have a.com is
+  a server mind you
+
+ and then the browser will then allow stuff to happen from ok place
+
+ we need to configure cors to allow things to get stuff from our client
+
+ are a couple ways to override CORS
+
+ things need to remember about CORS
+
+ cors deals with making sure cross origin came from the right places places that we trust
+
+ cors is prodominately enforced by the browser itself, this is the guy thall be checking and blocking when things come
+ from unapproved places not the server not apporved blocked
+ not from the server but approved then not blocked
+
+ ever seen an error in your browser CROSS ORIGIN something you have a problem with cors
+
+ what error to look for when if deals with cors
+
+ we are going to teach is how we bring cors into our app
+
+ api we have to override CORS
+
+ if we hit our own server we wont have to override it
+
+ problem with apis and googlemaps
+ we have no origin we have no server so noone trusts us.
+
+ we will be taking a peek at cors
+
+ we use app.use(cors()) after we npm install cors and require cors
+
+ cors is then enabled for all origins
+
+cors options is an object you give it properties when invoke cors you pass it in as a parameter
+
+const corsOptions = {
+  origin: 'https://example.com',
+  optionsSuccessStatus: 200 //some legacy browse
+};
+
+dynamic origin stuff on npm cors
+
+next thing we are going to talk about - memory
+
+we want to add memory to our server
+
+conversational memory
+
+how do we remember the way our client sends data to our server ? we can remember by session or sessions
+
+what context do we use session for outside of programming ?
+
+we have a group of people coming together and playing music and who is playing what and who is playing what role
+therapy sessions sit and talk to someone who knows about psycology you walk out with a better understanding the hardships of life
+
+server is acting like the therapist , everyone is coming to them and asking for things and asking questions to get answers to their questions
+how manyy user does the server talk to at once ?
+depends on user base
+
+2014 - ebay had 500,000,000 unique new entries added to website everyday 2 billion unique searches
+
+ sessions allow us to remember things between the server and different clients
+ they let us add memory between the server and each individual client
+
+
+ we want to remember usernames for each person and get the user name for each perosn we are talking to
+ when we do sessions we are able to say req.session.username or whatever property we want we are going to tell express
+  to run sessions it is goin to create an object we can add properties and delete properties
+
+  similar to req.body that it sends an object back as a response but different as req.body might have information on it to start if the client sent some
+
+  req.body cannot use it in a get request - for one request and then wiped and forgotten
+
+  server is therapist and clients are all people wanting to have convers.
+
+  req.session is the therapist note book it is sitting there recording the whole time of the session
+
+  closest thing that we will have to persistence for now session will be wiped when we restart the server
+
+  high level overview of how this works
+
+   when we send information back after a session we are going to give the client a cookie - very tiny file that is
+   stored on our comp associated with a domain
+
+   a cookie is a file that is stored on our comp associated with a domain -
+   it is like a tiny little name tag
+
+cookies can be used for a lot of these these things but we are using it as a tag
+
+we have hundreds of cookies on our computers
+
+cookies have been abused in the past and still used for bad but not as much
+
+everytime client with cookie comes back to server the clients browser asks did we have any cookies for this
+domain? grab them and attach them to the request automatically
+
+goes to server and server asks did have a cookie? oh it did and his name is kevin go and grab the object with the username of
+kevin and all of kevin's information
+
+mr french gets his own cookie and the browser attaches its cookie with its own unique id to the request sends the request to the server the server askss
+ if request has cookie and if it has a cookie
+the browser finds the name the cookie/nametag was under and grabs the object with the name that is the same as the one on the nametag and
+all of it's information is sent back
+
+the browser and the server are automatically exchangin this information you dont have to do anything just 'req.session'
+
+someone has a cookie blocker sessions wont work for that person
+
+sessions dont work with iphones
+
+android and apple dont allow cookies on phones originally because of memory
+
+session information is not that important sessions are quick and easy
+
+plenty of use cases still for sessions
+
+express comes bundles with session report you dont have to install anything
+
+still need to require session
+
+//use session as middleware
+app.use(session({ secret: 'keyword cat', cookie: {maxAge:60000}}))
+
+//access the session as req.session
+app.get('/', function(req,res,next){
+  var sess = req.session;
+  if(sess.views){
+    sess.views++
+    res.setHeader('content-type', 'text/html')
+    res.write('<p>views: ' + sess.views + '<p>')
+    res.write('<p> expires in:' + (sess.cookie.maxAge / 1000 + 's</p>'))
+    res.end()
+    } else {
+    sess.views = 1
+    res.send('welcome to the session demo. refresh!')
+    }
+})
+
+one thing that session must contain is a secret
+
+secret is a password sort of
+all sensitive data being stored on server it is hashed before being stored on to the server
+
+the secret is the key to unhashing that information
+
+insession memory data
+
+we give app.use(session({secret:'keyword cat', cookie : { maxAge:60000}})) an object with a secret and thats all we have to do
+
+every endpoint we have access to req.session
+basically storage between server and that one person thats hitting the endpoint that time
+
+we can store their id,username, email
+
+session is differnt for every computer that hits the site
+
+views will increase everytime our client accesses the page
+
+github expresjs/session
+
+last thing servers to do is share all files tht front end is going to want
+
+have server say everythjing in this folder is accessable via URL
+
+basically lets us use server as live server and we run node and it will do front end stuff too
+
+serving static file with express
+
+to serve static files such as images css files and JS files use express.static built-in middleware function in express
+
+pass the name of the direct that contains the static asses=ts too express.static middleware func to start serving the files ddirectly. for ex
+use the foll code to serv image css files and JS files in directory named public
+
+app.use(express.static('public')) < === whatever we put in this folder everybody has access to it as long as path matches URL
+
+we pass in folder name
+
+the path of app.use(express.static('public'))<=== is going to go off of wherever you are running nodemon from
+
+path is running from wherever we are running our nodemon from if we are doing it from parent directory we can leave off '../'
+
+we can cd into server and then run nodemon server.js
+
+when we initialize session and set it with a secret it will take care of all those things for us
+
+we must ignore our keys by adding them to .gitignore
+we can also set our repos to private
+
+=============================================================================================================
+REVIEW of WHAT WE WENT OVER
+============================================================================================================
+###express.static
+  -serve up your static assets/public files/front and applicaion cloudflare- app.use(express.static(__dirname + '/public'))
+      -want it to run for every request
+        -'__dirname' is a build in node thing, that root folder
+### CORS
+  -Cross origin request security
+  -by default, application only accept same-domain requiests
+  -CORS needs to be enables to do otherwise
+      -you can set either '*' (wildcard/everyone), or hardcoded addresses
+###Sessions
+  -remember user state across HTTP requests
+  -'express.session'
+  -$npm i --save express-session
+  -require it into index.js
+    'var session = require('express-session')'
+    'app.use(session({
+    secret:somesecretthing,
+    resave:false,
+    saveUninitialized: true
+    }))'
+
+    -we only have resave and saveUninitialized because the defaults change all the time
+    -there are o ther options you cna pass in if you want, check the docs
+    -access session information with 'req.session'
+  ### config file for secret keys-make a file called 'config.js'
+  immediately put config.js file into our .gititnore
+      -or else there's no point
+      -inside the config.js
+
+      module.exports = {
+        SESSION_SECRET: 'somesecretthigshbakdhsbdkahbdhbasda##',
+        GOOGLE_API_KEY: 'najnsdlanlsjnds####ASbalshbflahbflhabf'
+      };
+
+      use it in index.js or any other file that uses it
+
+      var config = require('/config');
+
+      app.use(session({
+      secret:config.SESSION_SECRET
+      }));
+
+      file-that uses-google-api.js
+
+      var config = require('../config');
+      var google = require('google-api')
+
+      Google.getMap({
+      api_key:config.GOOGLE_API_KEY
+      })

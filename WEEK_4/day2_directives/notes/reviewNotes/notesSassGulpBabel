@@ -1,0 +1,25 @@
+SCSS <==== @extend will let us use a class inside another
+we can use & which targets the parent element/class
+
+@mixin <=== with a function
+
+@mixin button-tmpl($color){
+  background-color : mix($color1,white,85%);
+}
+
+.side-box {
+@include button-tmpl(blue)
+}
+
+.main-content {
+@include button-tmpl(yellow)
+}
+
+we can use @mixin for crossbrowser capibility
+
+@mixin appearance {
+-webkit-appearance:none;
+-moz-appearance:none
+-ms-appearance:none
+appearance:none
+}

@@ -1,0 +1,25 @@
+.image-frame {
+  background-image: url('./60s-spider-man.jpg');
+  background-size: cover;
+  height: 50vh;
+  width: 35vw;
+}
+
+.info {
+  opacity:0;
+  background: rgba(110,110,110,0.39);
+  padding:10px;
+  color:white;
+}
+.info img {
+  height: 10vh;
+  float: right;
+  cursor: pointer;
+}
+
+.info h4 {
+  float: left;
+}
+.image-frame:hover div {
+  opacity: 1;
+}

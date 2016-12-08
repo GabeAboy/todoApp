@@ -1,0 +1,24 @@
+body{
+  text-align: center;
+}
+h1 {
+  width: 300px;
+  border:2px solid #efefef;
+  margin: auto;
+}
+.to-do-item {
+  cursor:pointer;
+}
+.complete {
+  text-decoration: line-through;
+}
+.to-do-list-container {
+  margin:auto;
+  width: 300px;
+  border:2px solid #efefef;
+}
+.add-to-do-container {
+  width: 300px;
+  border:2px solid #efefef;
+  margin: auto;
+}

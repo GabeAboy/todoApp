@@ -1,0 +1,29 @@
+There is a library for us to access for us to make our own promises and make our own determination for when those promises should be resolved.
+Library is called $q
+just like we inject $http we can injecy $q at the top and now $q is apart of the service as a dependency
+
+the way we make our own promises is by creating our own variable which is usually var promise = $q.defer() <==== here we invoke $q.defer
+this action of invoking $q is creating a promise object. Maybe because $q is a constructor function. What properties does this object have after
+creating a new object? .then()? .catch?
+
+$http under the hood uses the $q library to make these promise objects
+
+$q is creating a promise object that we can return to the caller
+
+way we return is is by 'return defer.promise'
+
+what $q will allow us to do is defer.resolve(response.data) <==== inside of our service in a .then() function
+
+when we defer.resolve() something <===== what ever value we pass into value we pass into here will go into our .then callback in the promise
+
+when we want to maniulate our data more before we send it over to our controller that is when $q comes into play, it will hold off sending our data over until we are ready
+
+
+OUTSIDE DIRECTIVES
+====================================
+
+We can get the cdn and place it underneath our angular script tag
+
+we place our outside directives as a dependency in our app.js in the 'angular.module('app',['here'])'
+
+for ng-grid it seems as though we need a cdn for the link which is at the top of the page and one for the script at the bottom

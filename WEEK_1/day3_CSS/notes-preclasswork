@@ -1,0 +1,27 @@
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     <<<========= used to target all contents/elements of a page set to border-box.
+          box-sizing: border-box;
+}
+
+Since box-sizing is pretty new, you should use the -webkit- and -moz- prefixes for now, as I have in these examples. This technique enables experimental features in specific browsers. Also, keep in mind that this one is IE8+.
+
+STATIC~
+static is the default value. An element with position: static; is not positioned in any special way. A static element is said to be not positioned and an element with its position set to anything else is said to be positioned.
+
+anything outside of static is said to be positioned
+
+RELATIVE
+relative behaves the same as static unless you add some extra properties.
+
+CLEAR
+The clear property is important for controlling the behavior of floats.
+
+clear:left, right
+
+overflow: auto to handle any type of overflow from a parent container
+
+inline-block <===== use inline-block instead of using float the hard way to get elements to align.
+
+inline block elemenets are affected by the vertical-align property so we probably want to set them to top middle, or bottom

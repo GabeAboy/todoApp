@@ -1,0 +1,185 @@
+Gulpjs
+automate and enhance your work flow
+
+Easy to use efficient high quality and easy to learn
+
+gulp is a task manager for developers
+
+if there is any type of task that we want to do as a developer gulp has a plug in for it
+
+we can use gulp to concat javascript files into one ===> we take all javascript files and condesnse them into one file
+
+So it will load faster and it will be cleaner on our code
+ it is a better solutioin for a variety of reasons
+
+first step is that we neeed to make a gulpfile.js we call it 'gulpfile.js'
+ This needs to go in our root directory
+
+ gulp file uses a syntax that is baked into node
+one feature is that we require modules that our code needs other things we need to bring in we can require them at the TOP of our code and it will bring them in
+
+we will use const ==> gulp will read its gulp file as es6 ==>
+const gulp = require('gulp')
+
+we have this function require that takes a string and what it will do is go into node_modules and look for gulp and what ever that thing is it is going to take
+that whole module and put it into this variable 'gulp' for us to use. We need to install gulp prior to doing this in our project
+
+npm i gulp <=======this will install gulp locally=======> npm install -g gulp <==== we want to make our file local so we will leave out the -g ths time
+
+npm init -y <===== is going to make a file in our root of our project that is called package.json
+  this is a file that every npm dependency has and what it describes is our project and the dependencies that our project needs from npm to make our project work
+  if we have the package.json file and run 'npm install' it will run and install all the dependencies for us.
+  thats useful if we are sharing our project on somewhere like github because instead of installing all of the necessary dependencies we just run one command and it takes care of it for us
+
+the other thing we should have is no_modules we will see all these folders inside of there =====> all the things that gulp installed itself from npm
+npm has a dependency tree it will go ahead and install dependencies that it needs
+
+we installed gulp and it installed all the things that it needs to operate which are also modules on npm
+
+we should always ignore our .gitignore folder <=== file that we have in the root of our directory and we put in the name of a file or folder and then save
+git will ignore that folder and all of its contents and not track them
+important because when we use git we wont have to import that whole file , people can run npm install and download the dependencies because we have a package.json will list the dependencies necessary for our application
+
+What is .DS_store?
+internally its the file system that mac uses to store little icons so its the little image of the contents of that folder it is a specific encoding that mac recognizes
+it is an image with specific encoding that parses it into utf-8
+
+making tasks with gulp
+gulp has what is a declarative style of programming - that means we tell gulp what we want to do and it will do it for us
+the opposite of that would be that we have to write out specifically what we want it to do
+so here we are writing our first task with gulp and telling gulp what to do because gulp has a declarative style of programming
+
+gulp.task()
+
+and then we pass in two arguments the first one is the name of this task and second is a callback function
+and inside of this callback function we are going to write our the task
+we are going to write our the steps for the task
+
+ first thjing we are going to do is grab all the javascript files we are going to bundle/concat into one file
+ and to do that we are going to use a built in gulp method called 'src'
+ gulp.src() <== takes a string or an array <=== this string is description of the thing we want to get
+ the simplest way we can do it is that we are going to describe a filepath we can look inside of our js folder and all of our JS files ar ethere
+ so we can pass in an array to src()  ['./js/adventureCard.js', './js/app.js'...] <=== we can list all our files into this array
+gulp.task('concat', () => {
+  gulp.src('')
+})
+
+concatenating js files will take a little maintanence
+
+gulp has a generic/abstract about desc what files we want
+uses something called blobbing
+gulp has a specific syntax that it uses to target all the files inside of the js folder with the ending of .js
+src(['./js/*.js']) <=== the '*' is called the wildcard ===> it will stand in for the name of our file
+'.' period is the 'wildcard' in regEx
+
+if we want to recursively target all the folders and files inside of the js file
+we can use '**' which will continute on going inside of every nested folder until there are no more .js files to grab and then return all those files in on massive array
+
+gulp.src(['./js/**/*.js'])
+
+now that we have all files sourced we need to call the concat method on them
+we need to install the plug in that javascript uses to concatenate files gulp has thousands of plug ins and we dont want to install all of them when we do this
+
+its really easy to get jst theh plug ins we need by going to gulpjs.com and clicking on plug ins at the top
+always require concat at the top of our page
+
+const concat = require('gulp-concat') <==== going to look through our node_modules and look for a folder named gulp-concat
+
+now that we have 'concat' we take our gulp.src() and do somehtjing with it
+in gulp when we take our files that we sourced and we want to say ok now i want to do somethjing else with them
+what we do is a .pipe()<=== which is where we can invoke concat()
+gulp.task('concat', function(){
+  gulp.src(['./js/**/*.js'])
+    .pipe(concat('all.js')) <==== this we be the file that gulp creates that will bundle all the files for us
+    .pipe(gulp.dest('.dist')) <======== gulp.dest<==== we provide a string which is a file path saying where we want our files to end up once we are finished with them
+})
+
+const gulp = require('gulp')
+const concat = require('gulp-concat')
+
+gulp.task('concat', function() {
+  gulp.src(['./js/**/*.js'])
+  .pipe(concat('all.js')) <==== this will be the file that the concatenated files will be inside of
+  .pipe(gulp.dest('.dist')) <=== we should make a folder called 'dist' which is short for distributable it is  kind of a computer science tradiion to call the folder that contains all of our files the '.dist' or distributive file
+})
+
+distributive means that this is the code that we will be using in production and stuff
+
+this is all that we will need in order for gulp to concat all of our .js files for us so we will need to go to our CLI
+and type in 'gulp concat' and press enter
+
+'gulp concatJS'<=== will run the task
+
+concat in this case came from the name we named our task <=== in this case we named our task concatJS
+
+now if we look in our root directory we should find a file 'all.js' which contains all of our files concatenated
+and now that we have all of our files concatenated we can then delete them from our index.js and we can
+just have one script tag at the bottom of our index.html file and place the destination to './dist/all.js'
+our all.js will be located in the .pipe(gulp.dest('./dist')) folder which is short for distributive which means that this is the code that we will be using during production
+
+
+**NOTE**
+dont delete any CDN's
+  we only want to delete our 'custom script files'
+
+our code is now broken because the way we sourced our code is not in order to the way that the code should return
+so we are going to tell gulp to grab all of our files but make sure this one file is first
+since we are using an array we can put the name of the file that we want first in the array
+
+we are going to learn how to compile es6 code to es5 using babel
+
+npm i gulp-babel --save <==== --save will tell it to save it as a dependency in our json file
+
+we can look at gulp-babel in npmjs.org
+
+we are going to create a new task with gulp
+gulp.task('es6', function(){
+  gulp.src('./js/app.js','./js/**/*.js') <====since we will be using this path so much we will just make a variable at the top by other variables/const and set it to this path const jsPaths = ['./js/app.js','./js/**/*.js']
+})
+
+after this we need to pipe our source into babel <======= in order to use babel we must require it at the top of our page.
+
+const babel = require('gulp-babel')
+
+gulp.task('es6', function(){
+gulp.src(jsPaths)
+.pipe(babel({     <====babel takes an object which is its config object which is its object in which is going to configure how babel is going to operate
+  presets:['es2015']          <===== babel is going to only contain one property 'presets', 'presets' is going to take an array
+}))                           <===== under 'presets' we are going to put the string 'es2015' because that is what babel is going to compile
+                              <===== what language is it going to look for when it is compiling es2015 is same as es6
+                              <===== we can tell babel to compile multiple things at a time
+})
+
+
+babel has plug-ins <==== we have to install 'babel-preset-es2015'
+npm i --save babel-preset-es2015
+
+it is also in the documentation
+
+again check the documentation prior or during or after writing the code for the first few times
+
+
+so not only do we need to compile our es6 in a tast but we must also bundle it in another task
+
+
+gulp.task('es6', function(){
+  gulp.src(jsPaths)
+  .pipe(babel({
+    presets:['es2015']
+  }))
+  .pipe(gulp.dest(./dist))
+})
+
+
+type 'gulp es6'
+gulp.task('es6bundle', function(){
+  gulp.src(jsPaths)
+  .pipe(concat('all.js'))
+  .pipe(gulp.dest('./dist'))
+})
+
+type in 'gulp es6Bundle'
+
+after we must set a default task with the name of 'default' and the value of our concat bundle
+
+then we must set a watch function gulp.watch(jsPaths, ['es6Bundle'])

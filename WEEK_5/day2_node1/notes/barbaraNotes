@@ -1,0 +1,97 @@
+[comp] ===> [bigger comps] === send it back ==> [comp]
+
+DNS ====> server ===> response
+
+Create -POST
+Read - GET
+Update - POST
+Delete -DELETE
+
+we are going to build our own servers with the endpoints and wh can send back the addresses
+we are making addresses and sending
+make server create address to send mail to and then send mail to
+
+nvm <== we can run this - maybe look this up iit allows to run different versions
+
+before node we had to learn a server-side language php
+
+how do you exit out of vim in CLI
+
+npm is a place where people push up their code for people to use them
+
+instead of writing our own code we can probably find it on npm where someone could have written it better if not we should push it onto there
+
+we can just take what we need as a package
+
+when we make a server how do we know what packages to use ?  <=== package.json is going to tell us what modules to install using npm init -y or npm init
+
+dont forget to npm init
+
+ISC or MIT for liscense under package.json to tell whether people can use your code or not
+
+we can go inside of the file and change it physically
+
+on of theh biggest purposes of package.json is to track our dependencies
+we can use npm i --save
+
+close vim with :q enter or ;q enter
+
+dont forget to --save when npm installing
+
+delete =====> rm -rf node_modules ====> and then install it again if needed ====> npm install
+
+we can use npm uninstall and then package name
+
+probably best to npm uninstall
+
+--save-dev <== only for things we use in developement important for development environment<===== creates a devDependencies property
+
+we must require each of our modules that we install
+
+after we require dont forget to --save
+
+now we are going to build out our api
+
+check out vanilla javascript <=== it's called imperative code meaning we have to tell the code what to do
+
+what are headers ? <====
+
+express abstracts a way where things like headers into short code
+
+we must instantiate express with express()
+
+we write our own endpoints
+
+callback after (req,res,next)
+
+next is letting express know that there is another function/call to run
+
+listen is an infinite loop listening to our port that we assigned
+
+when we send our response 'res' we need to put it into json format because that is protocol
+
+when installing nodemon install it with a '-g' for global so that we can use it anywhere we dont need to include a --save because we dont have a package.json for globals
+
+where do we assign our port ?
+
+really important that we send our response in json or else our response will not work
+
+body-parser will automatically stringgify and parse data that comes to ad leaves our server
+
+bodyParser will take care of strigify and parser
+
+middleware is bodyParser in app.use any response that goes through will be passed through this middleware
+  use whatever is in here for everysingle response and request
+
+  we have to keep middleware towards the top of our app underneath the variables so that they may be ran before the rest of the functions
+
+certain middleware depends on other middleware so order is important
+
+http requests are stateless meaning they dont care what comes before or after it
+  it will only do what we tell it to do
+
+always send back a res.status a response status and then res.send(something.json())
+
+specify data returned in the endpoint
+
+res.render() <===== look up render may be used for html and filepaths

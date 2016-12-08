@@ -1,0 +1,58 @@
+ANGULAR
+
+All framerworks are librarries but not all libraries are frameworks
+
+frameworks are structures
+
+MVC - model view controller
+
+  model - data & data function <===== anything that has to do with 'verb' the data
+
+  controller - between the model and view which connects the model to the view
+
+  view - CSS, HTML
+
+Module - the starting point, the format, all the workers are the services and controllers and views, configs. All workers of the module.
+
+When we bring in angular, it brings in a global object named Angular!
+
+angular.module < === module is a property of the angular object? . maybe. <==== we say global object angular you have a module named 'myApp'.you are in charge of this area
+
+giving the second param of [] in angular.module('myApp',[]) < ==== empty array makes the module with the given name
+
+when we add a controller we are calling the module and adding a controller letting the module(foreman) know that they have a new employee named 'mainCtrl'
+
+$scope <=== the glue that binds the view to the controller
+
+Is $scope is an object and when we add a property using dot notation.
+
+ONE WAY BINDING <==== IT WILL GO FROM THE CONTROLLER TO THE HTML ONLY!
+
+WHEN DATA CHANGES FROM from more than one directive example model/view/{{}} it is known as two-way binding
+  also known as the synchronization of model and view so that when the model updates so does the view
+
+ngmodel acts as a two-way bind <=== two way binding is ng-model <=== is a specific keyword to two way binding
+
+angular is built on jquery <=== is jquery under the hood
+
+built-in directives basically anything starting with ng
+
+{{}}<==== anything inside of the double curlys can be evaluated in javscript
+
+filter : <==== will filter and display according to what model we pass in if using an input
+
+if we want a specific filter we can create an ng-model and create an empty obj and add a property related to our original
+
+ng-show and ng-hide toggle display property <=== look up angular Js docs
+
+ng- if <===== if this doesnt pass or is false dont even put it on the DOM <=== it is not rendered <==== used for values that are not easily changeable
+
+ng-click needs to be passed a callback function and the cb func needs to be invoked <===== when invoked goes to controller and checks the $scope object for a function
+
+$scope.checkNumber(){
+var num = $scope.num/1;
+if(isNaN(num)){
+$scope.nan = true
+}
+$scope.nan = false
+}

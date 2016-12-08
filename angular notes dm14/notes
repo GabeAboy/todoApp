@@ -1,0 +1,45 @@
+Angular <=== web framework More than a library a whole tool kit
+
+    drawback being it is very opinionated.
+
+    using the non minified version will give better error reporting
+
+    bootstrapping our app means we are taking angular and bootstrapping it onto our html page
+
+    Ng-app is the first thing you need to memorize about angular which is used to bootstrap angular to our html.
+
+    every angular proejct has an app.js file <=== main entry point/ central hub of our project
+        we will add more stuff to it whne we learn routing
+
+    angular.module('app', [] )      '[]'<==== is for dependencies
+
+    controller <== controls logic behind view
+
+    view< === displays what can be seen
+
+    model <== stores data from the view and passes from view to controller and back
+
+    very important that when we set our script tags we place them in order from CDN,toBootstrapping CDN, controller,service
+
+    {{}}<<===== take the text inside the brackets and look for a variable that matches that text and replace the value wit the value of the variable.
+        known as two way binding. because controller passes data into those brackets
+
+    what is $scope <=== controller between controller and view <=== is that the model ?
+
+    ng-model <==== making a value called message <======ng model is linked to our message variable in our controller it will change the data in our model
+            the reason why this is considered two way binding is because we bind data and anywhere we have that data bound it will automatically bind it.
+
+Using filter in angular
+
+    anything using the being used by angular as the model will be given to filter as the model in which to run off of
+    we use | filter : variableProvidedByModel
+
+ng-model <=== responsible for binding the view into the model,which other directive susch as input,textarea, or selet require
+
+    providing validation behavior (required, numbe,email,url)
+
+    keeping state of control (valid/invalid,dirty/pristine,touched/untouched validation errors)
+
+    setting related css classes on the lement (ng-valid, ng invalid, ng-dirty, ng-pristine, ng-touched,ng-untouched, ng empty, ng-notempty), including animations
+
+    registering the contrl with its parent form

@@ -1,0 +1,48 @@
+============================================================================================================
+REVIEW!!!
+============================================================================================================
+other common frameworks
+  -koa
+  -Sails
+  -iojs
+
+Machine address : port
+
+app.use() for every middleware request
+
+function declarations are hoisted
+
+============================================================================================================
+CLASS NOTES!!!
+============================================================================================================
+
+websites track our info with cookies, IP address <=== these are all public
+
+track something for user more secure - will be on server-side session<=== which comes with express <===cookies for the backend, local storage for backend
+
+max session will be about ten years if we set the session
+
+express session on github will tell us all the things we can do with express session
+
+we need to install express-session prior to requiring session
+
+SSH private or public keys
+
+app.use session
+
+we need to store our secrets in a seperate secretkeys.js file and put the filename/filepath in .gitignore file
+
+we will have to require this fiile into the area where we use the secret
+
+node environment variables<=== maybe google it======>  run in command line or store in bash file
+
+session secret will hash everything in session and the secret key will unhash it.
+
+express.static('public')<==== serving my front end files <==== give it the path that you want to serve up so that they see the files that we want them to see
+
+proper way to write this is app.use(express.static(__dirName + '/public'))
+
+__dirname <=== will always find the public folder from our directory name
+
+headers
+ACCESS-contol-allow-origin : * or you cna whitelist cients here

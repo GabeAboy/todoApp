@@ -1,0 +1,20 @@
+display: <==== initiates flex
+justify-content: <===== aligns along main axis, helps distribute extra free space left over.
+flex-direction
+flex:
+
+media-queries on console how can i use this media query in console devtool.
+
+make mobile first~
+
+mobile large - laptop
+
+position sticky toolbar
+
+fontastic.com
+
+min-width is targeting the size of the body
+
+background-position-y:
+
+background-position-x

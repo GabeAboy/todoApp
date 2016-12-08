@@ -1,0 +1,77 @@
+first concept is 'middleware'
+  in node when we listen to a certain request
+    we call our express app
+
+  in express they give us the option to use middleware
+  we have the option to put things in the middle - we have our final function that handles the requrest
+  but we may have a few things we need to do first
+
+  for authentication we may need to write some middleware that is going to get req and res and Next
+
+  if (req.user.isAdmin !== 'admin'){
+    res.end()
+  }
+  else {
+    next()      <===== next is a function so we need to invoke it
+  }
+
+    OTHER FUNCTION()
+
+
+  two forms of middleware - we can invoke it with next() in a Chain
+  or we can use app.get which invokes it prior to running everything everytime
+
+  in any middle ware function res.end() or next()
+
+We use next() <==== by itself<=== is a function of express that will be invoked
+  it will go on to invoke what is next in line
+
+  in order for function chaining we would normally use a whole bunch of 'app.use'
+  instead of using conventional function declarations
+
+  if we are going to be doing anything more than once we will want to be using a middlewarre
+    for example if we are going to be checking if a user is signing more than once we would want to use middleware
+
+only get body on POST requests
+
+bodyParser is a tool we use to parse data from the body
+
+parameter and queries are two other ways to get data
+
+app.use(bodyParser.json) ===> use req.body to get to the body
+
+params ==> req.params
+
+query ===> req.query
+
+in agnualr when we send our http request and send an object we send the data in a 'data' property
+
+'?' <== indicates that we are ready to start our query
+
+app.get('url/api/movies?movieYear=2011')   <==== we are listening for this in our server/node
+
+req.params works a little bit like angular routing
+  ':id'  =====> req.params.id
+if we want to return the first twenty movies of an array without using a for loop
+slice(index,ending index) - we can use the 'slice method' which will not permenantly alter the original array
+the 'p' in splice is for permanenet
+
+pagination or paging ====> page numbers for get function
+
+'?key=null' <==== the req.query is identified as the key after the '?'
+
+with queries we can add them to any url you dont have to add them to a url
+
+we can set defaults to our req.query by using an or '||' when defining req.query || 1 to set our page to a default of one due to our logic
+
+we can set our query responses to even numbers that end in '0' to make it easier to keepe track of in our logic
+
+query parameters always come back as strings
+
+query parameters always come back as strings
+
+query parameters always come back as strings
+
+query parameters always come back as strings
+
+query parameters always come back as strings

@@ -1,0 +1,269 @@
+ECMA
+every new version of javascript is a superset of the last meaning it is backwards compatible
+
+babel - a compiler for javascript
+  example we can write in es6 and babel will compile it to es5
+
+const and let are replacements for var
+
+const- for constant would allow us to <=== when we set a constant to a string it will never be mutable or changeable it will be read only
+if we have some really importnat number like age that we didnt want to change we would use const
+const allows us to make values immutable
+
+const only works with data types
+
+it would not work with arrays and objects
+
+const makes variable read only
+
+Let - kind of a replacement for var
+we can change a let variable it is mutable
+
+with var if we have a function that takes in 2 nums and returns sum
+ if (a< 0) {
+ var foo = 'bar '
+  a= 0
+ }
+ console.log(foo)
+
+with let instead of variables being function scoped they are blocked scoped
+
+'let' <==== block scoped
+
+'use strict' <===== when declaring a variable without using var will make a global variable/ will prevent it
+es6 - everything is in strict mode
+
+the FAT ARROW or MAGIC ARROW
+function upperCase(str) {
+  return function() {
+    console.log(str)
+  }
+}
+
+let logString = upperCase('foo')
+logString()
+
+WTF if we only have one argument we dont even need parentheses
+if our function only returns one thing then we down need curly braces and return statement
+============================
+const upperCase = (str) => {
+  return (str,str2) => {
+    console.log(str,str2)
+  }
+}
+=======================
+const sum = a => b => console.log(a + b)
+
+
+
+var add = sum(2);
+add(3);
+
+const sayHi = name => console.log("hello " + name)
+================================================
+const getData = () => {
+
+  return $http({
+    method:'GET',
+    url:'www.example.com'
+  }).then( response => response.data)
+
+}
+============================
+
+if there is only one argument there is no need for parentheses
+
+if the function is returning only one value there is no need for curly braces or a return statement
+
+when writing a method in an object we dont need 'function' keyword or ':' colon
+
+magic arrow is going straight to the window object when not inside of an object
+
+no need for keyword 'function' or ':' colons when describing methods using the normal function pattern ======>
+example :
+============
+var user = {
+name:'Thai',
+sayName() {
+console.log("HI "+ this.name )
+},
+upperCase() {
+this.name = this.name.toUpperCase();
+return () => {
+console.log(this.name)
+}
+},
+sum(a) {
+console.log(this.name + 'a')
+}
+}
+user.sayName();
+=================
+es6 also has build in promises
+
+TEMPLATE STRINGS - `` <=== known as backtick <==== backwticks will convert whatever is between into normal stings
+we can have a return inside of a backtick <==== will also include tabs and whitespaces
+becomes much easier to insert varibales
+we can use ${variableName} to insert our variables inside of template strings inside of our back tick which will exept any type of whitespace and tabs
+
+SPREAD OPERATORS - '...'
+so for example if we want to concatanate two arrays together
+var arr1 = [1,2]
+var arr2 = [3,4]
+var arr3 = [arr1, arr2] <===WRONG <=== we get nested arrays
+    so here we can use the spread operator '...' it will take the array and spread its values
+    var arr3 = [...arr1,...arr2] < ==== correct we will get [1,2,3,4]
+=========================================
+    var sum = (arr) => arr.reduce((a,b) => a + b)
+
+console.log(sum([1,2,3,4]))
+==========================================
+
+spread operator '...' is three dots in front of the thing we want to loop through and turn it into one array.
+it will take that array and spread it's values
+
+useful for merging two arrays
+
+and useful for functions tht takes multiple args
+so it will take the multiple args and put them into one array
+
+BJECT DESTRUCTURING AND ARRAY DESTRUCTURING
+if we want to desctructure an object example we want to user.name
+let {name} = user =====> //var name = user.name
+let {password} = user ====> var password = user.password
+
+~we can do both by saying let {name,password} = user~
+
+we can do the same things with arrays - we can use ===> let [num1,num2,num3] = numbers ===> we will get num1 = 0, num2 = 1, num3 = 3
+this will destructer the array for us in the index it was built
+
+we can set a default value inside of the arguments of the function assigning a default using the '='
+ operator  var sum = (a ,b = 5) => { return a + b}
+========================================================from babeljs.io======================
+// [1,2,3].map(n => n + 1);
+const jello = 'jellyllike'
+
+const num = ['string',1,23]
+num[2] = 4;
+num[2];
+
+const str = 'brett'
+
+const age = 26;
+
+// function sum(a,b){
+//   if(a < 0){
+//     let a = 0;
+//   }
+//   console.log(a)
+//   return a + b;
+// }
+
+// function sum(arr){
+// var a = 0;
+// for(let i = 0; i < arr.length; i++){
+//   sum+= arr[i];
+// }
+// console.log(i)
+// }
+
+//   function upperCase(str) {
+//   return (str,str2) => {
+//     console.log(str+str2)
+//   }
+// }
+
+// const upperCase = (str) => {
+//   return (str,str2) => {
+//     console.log(str,str2)
+//   }
+// }
+
+// const sum = a => b => console.log(a + b)
+
+
+
+// var add = sum(2);
+// add(3);
+
+ const sayHi = name => console.log("hello " + name)
+
+ const getData = () => {
+
+   return $http({
+     method:'GET',
+     url:'www.example.com'
+   }).then( response => response.data)
+
+ }
+
+ const upperCase = (str1)=> (str2) => console.log(str1 + str2)
+
+ var user = {
+   name:'Thai',
+   number:5555555,
+  sayName() {
+    console.log("HI "+ this.name )
+  },
+  upperCase() {
+    this.name = this.name.toUpperCase();
+    return () => {
+      console.log(this.name)
+    }
+  },
+  sum(a) {
+    console.log(this.name + 'a')
+  }
+ }
+user.sayName();
+// var name = user.upperCase()
+// name()
+console.log(`your name is ${user.name} and number is ${user.number}`)
+
+// var sum = (arr) => arr.reduce((a,b) => a + b)
+
+var sum = (...arr) => arr.reduce((a,b) => a + b)
+
+console.log(sum(1,2,3,4,5,6,7,8,9,10,11111111))
+// console.log(...[1,2,3],...[4,5,67])
+// console.log(...['mary ','had '],...['a', ' little lam'])
+// console.log(...`mary had `,...`a little lamb `)
+var reverse = (...str) => {
+
+  str = str.reverse()
+
+
+}
+console.log(reverse('sam'))
+
+// var user = {
+//   name : 'thai',
+//   passoword:'trout'
+// }
+// let {name} = user;
+// let {password} = user;
+
+// let {name,password} = user;
+// var numbers = [0,1,2,3,4,5]
+
+let [firstNumber,secondNumber,thirdNumber] = numbers
+
+// var user = ['Thai', 'Trout']
+// var [name,password] = user;
+
+var user = {
+  name:'Thai',
+  pw:'trout'
+}
+
+var {name,password} = user;
+
+
+
+function sum(a, b=5){
+return a + b;
+}
+
+
+
+================================================================

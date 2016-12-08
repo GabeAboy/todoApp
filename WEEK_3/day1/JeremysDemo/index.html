@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+  <head>
+    <script data-require="angularjs@1.5.8" data-semver="1.5.8" src="https://opensource.keycdn.com/angularjs/1.5.8/angular.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+
+<body ng-controller="mainCtrl">
+  <div>  ______  </div>
+  {{anything}}
+
+  <h3>Two Way Binding</h3>
+  <input ng-model="twoWayText"/>
+  <br/>
+  {{twoWayText}}
+
+  <h3>Lists with ng-repeat</h3>
+  <ul>
+    <li class="red" ng-repeat="hero in heroes">{{hero.name + " is a superhero"}}</li>
+  </ul>
+
+  <h3>Filtering Lists with ng-repeat</h3>
+  <input ng-model="heroFilterText"/>
+  <ul>
+    <li class="red" ng-repeat="hero in heroes | filter: heroFilterText">{{hero.name}}</li>
+  </ul>
+
+  <h3>Specific Filtering Lists with ng-repeat</h3>
+  <input ng-model="heroFilter.name"/>
+  <input ng-model="heroFilter.powers"/>
+  <ul>
+    <li class="red" ng-repeat="hero in heroes | filter: heroFilter">{{hero.name}}</li>
+  </ul>
+
+  <h3>Show and Hide</h3>
+  <div ng-show="isAwesome">You are awesome</div>
+  <div ng-show="!isAwesome">You are almost awesome</div>
+  <div ng-hide="isAwesome">Sorry, be more awesome</div>
+
+  <div ng-if="isAwesome">If you are awesome, you see this</div>
+
+  <h3>Click and Events</h3>
+  <button ng-click="awesomeClicked()">Toggle Awesomeness</button>
+
+  <h3>click + show + model</h3>
+  <input ng-model="num"/>
+  <span class="red" ng-show="nan">This is not a num</span>
+  <span class="red" ng-show="nan !== undefined && !nan">This is a num</span>
+  <br/>
+  <button ng-click="checkNumber()">Check Num</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js"></script>
+</body>
+
+</html>

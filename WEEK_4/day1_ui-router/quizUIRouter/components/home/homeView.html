@@ -1,0 +1,13 @@
+<div class="quizzes">
+  <h1>Choose a quiz!</h1>
+  <div ng-repeat='quiz in quizzes'>
+    <a ui-sref="quiz({quizName:quiz.name})">
+      {{quiz.name}}</a>
+  </div>
+</div>
+
+<!--  -->
+
+<div class="pastQuizzes">
+  <h1>view past Quizzes</h1>
+</div>

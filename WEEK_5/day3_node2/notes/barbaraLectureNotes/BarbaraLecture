@@ -1,0 +1,104 @@
+C app.post('/api/books', function(){})
+R app.get('/api/books', function(){})
+U app.put('/api/books', function(){})
+D app.delete('/api/books', function(){})
+
+req.params <=== just like in angular is goins to describe an id which we will need
+
+app.get('/api/books', function(){
+  var bookIndex = req.params.id;
+  res.status(200).send(books[bookIndex])
+})
+
+differnce btewn params and query is params is part of the actual URL ===> api/books/title
+
+req.query ===> has an id like parameters the id is identified after the '?'
+
+any more sensitive data we wouold want to send in a req.body
+
+we dont nee to include the '.js' when we require a file
+
+multiple files make sure we export what we need to export using 'require' and module.exports to export from the file
+
+Common data structures
+  -array of objects
+  -var books = [
+    {
+      name:"Harry Potheaed",
+      Author:"JKK ROWW"
+    },
+    {
+      name:"Harry Potheaed",
+      Author:"JKK ROWW"
+    },
+    {
+      name:"Harry Potheaed",
+      Author:"JKK ROWW"
+    }
+  ]
+  - other examples : movies , schools , users
+
+### CRUD (create,read,update,delete)
+
+  module.exports = {
+  getBooks = getBooks
+  }
+
+  modules.exports = {
+
+    create: function(req,res,next){
+
+    },
+    read: function(req,res,next){
+
+    },
+    update: function(req,res,next){
+
+    },
+    delete: function(req,res,next){
+
+    }
+  }
+
+dont forget to require your exported files!
+
+dont forget to require our exported files!
+
+###req.params <==== also known as 'path params'
+
+### req.query (URL query)
+  -anythnig after '?' in url
+  -key=value format. spaces get a '+'
+  -different queries are seperated by '&'
+  -/books?id=name+potter
+
+  req.qery = {
+  id = 0,
+  name: ' harry potter'
+  }
+
+  tip:if not sure use console.log
+
+###Multiple files
+
+    -similar to Angular where you divide up code functionally
+    - user module.exportts to export out code from file
+    -use var whatever = require('path/to/file/with/code/we/want')
+
+  ###chaining functions and next()
+    -express does things in order
+    -if you want to only use it for some requrests, then make a functions. and then add it to specific endpoints
+
+app.use(iAmUserdForEveryRequest());
+
+functions onlyUedWhenIwantMiddleware (req, res, next) {
+  //do stuff
+  next()
+  // if you dont call the next it wont coninue
+}
+
+app.get('/books', onlyUsedWhenIWantMiddleware, function (req, res, nex) {
+  //stuff
+})
+
+app.use() applies a function to every reaquest made before passiing it on to the next fucntion or eventually on to the next fumction or eventually sendimg a response
